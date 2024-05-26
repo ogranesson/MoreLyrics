@@ -1,0 +1,85 @@
+{
+    "songbooks" : [
+        {
+            "id": "2000",
+            "name": "Campfire",
+            "songs": [
+                {
+                    "id": "3000",
+                    "title": "Zeester met Koffie",
+                    "author": "Bart Peeters",
+                    "link": "https://www.youtube.com/watch?v=_TZh9Gd1uck",
+                    "lyrics": "Intro"
+                },
+                {
+                    "id": "3001",
+                    "title": "Ram Sailee",
+                    "author": "Bipul Chettri",
+                    "link": "https://www.youtube.com/watch?v=ENVW3uZ3a-4",
+                    "lyrics": "Intro"
+                },
+                {
+                    "id": "3002",
+                    "title": "Zeester met Koffie",
+                    "author": "Bart Peeters",
+                    "link": "https://www.youtube.com/watch?v=_TZh9Gd1uck",
+                    "lyrics": "Intro"
+                },
+                {
+                    "id": "3003",
+                    "title": "Ram Sailee",
+                    "author": "Bipul Chettri",
+                    "link": "https://www.youtube.com/watch?v=ENVW3uZ3a-4",
+                    "lyrics": "Intro"
+                }
+            ]
+        },
+        {
+            "id": "2001",
+            "name": "Hangout",
+            "songs":
+            [
+                {
+                    "id": "3000",
+                    "title": "Soren",
+                    "author": "beabadoobee",
+                    "link": "https://www.youtube.com/watch?v=NUENubp8g9M",
+                    "lyrics": "Intro"
+                }
+            ]
+        },
+        {
+            "id": "2002",
+            "name": "Antwerpen gig",
+            "songs": [
+                {
+                    "id": "3003",
+                    "title": "Cbat",
+                    "author": "Hudson Mohawke",
+                    "link": "https://www.youtube.com/watch?v=eN6jkWxxm2Y",
+                    "lyrics": "Really? This song?"
+                }
+            ]
+        },
+        {
+            "id": "2003",
+            "name": "Songs to practice",
+            "songs": [
+                {
+                    "id": "3004",
+                    "title": "Wonderwall",
+                    "author": "Oasis",
+                    "link": "https://www.youtube.com/watch?v=bx1Bh8ZvH84",
+                    "lyrics": "Intro"
+                },
+                {
+                    "id": "3005",
+                    "title": "Hamro Nepal Ma",
+                    "author": "Neetesh Jung Kunwar",
+                    "link": "https://www.youtube.com/watch?v=ubkwRMq50p8",
+                    "lyrics": "Intro"
+                }
+            ]
+        }
+    ]
+}
