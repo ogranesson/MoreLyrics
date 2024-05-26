@@ -1,0 +1,19 @@
+<div class="grid grid-cols-3">
+    <div>
+        <app-view-song-book
+        [songbooksToChild]="songbooks"
+        (selectedSongbook)="selectSongbook($event)">
+        </app-view-song-book>
+    </div>
+    <div>
+        <app-view-song
+        [songsToChild]="songs"
+        (selectedSong)="selectSong($event)"
+        ></app-view-song>
+    </div>
+    <div>
+        <app-view-lyrics
+        [songdataToChild]="songdata"
+        ></app-view-lyrics>
+    </div>
+</div>

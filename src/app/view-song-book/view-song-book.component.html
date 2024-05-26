@@ -1,1 +1,5 @@
-<p>view-song-book works!</p>
+<ul>
+    <li *ngFor="let songbook of songbooks" (click)="selectSongbook(songbook)">
+      {{ songbook.name }}
+    </li>
+</ul>
