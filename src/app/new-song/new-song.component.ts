@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { DataService } from '../data.service';
 import { Songbook } from '../models/songbook.model';

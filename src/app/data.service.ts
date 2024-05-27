@@ -20,7 +20,6 @@ export class DataService {
   }
 
   getSong(id: number): Observable<Song> {
-    console.log(this.http.get<Song>(`${this.url}/songs/${id}`));
     return this.http.get<Song>(`${this.url}/songs/${id}`);
   }
 
@@ -30,5 +29,9 @@ export class DataService {
 
   updateSongbook(songbook: Songbook): Observable<Songbook> {
     return this.http.put<Songbook>(`${this.url}/songbooks/${songbook.id}`, songbook);
+  }
+
+  deleteSongbook(id: string): Observable<any> {
+    return this.http.delete<Songbook>(`${this.url}/songbooks/${id}`);
   }
 }

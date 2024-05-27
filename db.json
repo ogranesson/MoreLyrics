@@ -3,6 +3,7 @@
     {
       "id": "2000",
       "name": "Campfire",
+      "description": "For the good times.",
       "img": "assets/default.png",
       "songIds": [
         30000,
@@ -12,6 +13,7 @@
     {
       "id": "2001",
       "name": "Hangout",
+      "description": "For the even better times.",
       "img": "assets/default.png",
       "songIds": [
         40000,
@@ -22,17 +24,10 @@
     {
       "id": "2002",
       "name": "Antwerpen gig",
+      "description": "Scary!",
       "img": "assets/default.png",
       "songIds": [
         50000
-      ]
-    },
-    {
-      "id": "2003",
-      "name": "Songs to practice",
-      "img": "assets/default.png",
-      "songIds": [
-        50001
       ]
     }
   ],

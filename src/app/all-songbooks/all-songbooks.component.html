@@ -1,3 +1,15 @@
-<div *ngFor="let songbook of songbooks" (click)="selectSongbook(songbook.id)">
-    <div>{{songbook.name}}</div>
+<div class="flex flex-row w-full p-3 bg-gray-200 h-screen">
+    <div *ngFor="let songbook of songbooks" (click)="selectSongbook(songbook.id)" class="bg-white rounded-lg hover:cursor-pointer w-1/6 h-1/2 p-3 mx-2 flex flex-col items-center">
+        <img width="100%" src={{songbook.img}} alt="songbook">
+        <div class="grid grid-cols-5 w-full h-full items-center">
+            <div class="col-span-4">
+                <div class="font-semibold text-2xl">{{songbook.name | titleshortener}}</div>
+                <div class="text-sm">{{songbook.description}}</div>
+            </div>
+            <div class="w-ful p-2 border-2 rounded hover:bg-gray-300 hover:cursor-pointer z-10" (click)="deleteSongbook(songbook.id, songbook.name, $event)">
+                <img width="100%" src="assets/delete.png" alt="songbook">
+            </div>
+        </div>
+    </div>
 </div>
+
