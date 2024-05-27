@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { ViewLyricsComponent } from '../view-lyrics/view-lyrics.component';
 import { ViewSongComponent } from '../view-song/view-song.component';
@@ -23,6 +23,7 @@ export class HomeComponent {
   songbooks: Songbook[] = [];
   songIds: number[] = [];
   songdata!: Song;
+  songbookIdThroughParam: string | null = '';
   emptySong: Song = {
     id: '',
     title: '',
@@ -33,9 +34,16 @@ export class HomeComponent {
     lyrics: ''
   };
 
-  constructor(private dataservice: DataService) {}
+  constructor(private dataservice: DataService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      if (params['songbookId']) {
+        this.songbookIdThroughParam = params['songbookId'];
+      } else {
+        this.songbookIdThroughParam = null;
+      }
+    });
     this.dataservice.getSongbooks().subscribe(songbooks => {
       this.songbooks = songbooks;
     });

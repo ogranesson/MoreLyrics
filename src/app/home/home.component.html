@@ -3,6 +3,7 @@
     <div class="p-3 bg-gray-200 rounded h-screen">
         <app-view-song-book
         [songbooksToChild]="songbooks"
+        [receivedSongbookId] = "songbookIdThroughParam"
         (selectedSongbook)="selectSongbook($event)">
         </app-view-song-book>
     </div>
