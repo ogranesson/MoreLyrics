@@ -24,7 +24,7 @@ export class HomeComponent {
   songIds: number[] = [];
   songdata!: Song;
   emptySong: Song = {
-    id: 0,
+    id: '',
     title: '',
     author: '',
     link: '',

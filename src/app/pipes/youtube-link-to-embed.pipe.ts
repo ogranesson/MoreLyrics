@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class YoutubeLinkToEmbedPipe implements PipeTransform {
 
   transform(link: string): string {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const regExp = /^.*(youtu\.be\/|youtube\.com\/|v\/|u\/\w\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = link.match(regExp);
 
     if (match && match[2].length == 11) {

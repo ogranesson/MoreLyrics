@@ -1,5 +1,5 @@
 export interface Songbook {
-    id: number;
+    id: string;
     name: string;
     songIds: number[];
 }

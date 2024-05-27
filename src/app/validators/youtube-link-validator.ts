@@ -6,7 +6,7 @@ export function youtubeLinkValidator(): ValidatorFn {
     if (!value) {
       return null; 
     }
-    const youtubeRegex = /^(https?:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/;
+    const youtubeRegex = /^(https?:\/\/)?((www\.)?youtube\.com\/watch\?v=.{11}(&.*)*$|(www\.)?youtu\.?be\/.{11}(\/)?$)/;
     return youtubeRegex.test(value) ? null : { invalidYoutubeLink: true };
   };
 }
