@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TitleshortenerPipe implements PipeTransform {
 
   transform(title: string): string | null {
-    const max = 30;
+    const max = 20;
     if (!title) {
       return null;
     }

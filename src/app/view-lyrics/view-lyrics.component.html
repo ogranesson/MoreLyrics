@@ -1,2 +1,28 @@
-<p>{{ songdata.lyrics }}</p>
-<iframe width="560" height="315" [src]="songdata.link | youtubeLinkToEmbed | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div *ngIf="songdata && songdata?.id != 0">
+    <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col justify-between">
+            <div class="mb-3">
+                <p class="text-5xl font-extrabold">{{ songdata.title }}</p>
+                <p class="text-3xl font-semibold">by {{ songdata.author }}</p>
+            </div>
+            <div class="text-xl">
+                <p>Tuning: {{ songdata.tuning}} </p>
+                <p>Capo: {{ songdata.capo }}</p>
+            </div>
+        </div>
+        <div class="justify-self-end">
+            <iframe *ngIf="songdata && songdata.lyrics.length > 0" width="400" height="225" [src]="songdata.link | youtubeLinkToEmbed | safe" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <hr class="h-px my-8 bg-gray-400 border-0">
+    <div>
+        <pre>
+{{ songdata.lyrics }}
+        </pre>
+    </div>
+
+</div>
+
+<div *ngIf="!songdata?.id" class="text-center text-gray-400">
+    <p>Select a song to begin</p>
+</div>

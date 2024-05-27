@@ -3,83 +3,87 @@
         {
             "id": "2000",
             "name": "Campfire",
-            "songs": [
-                {
-                    "id": "3000",
-                    "title": "Zeester met Koffie",
-                    "author": "Bart Peeters",
-                    "link": "https://www.youtube.com/watch?v=_TZh9Gd1uck",
-                    "lyrics": "Intro"
-                },
-                {
-                    "id": "3001",
-                    "title": "Ram Sailee",
-                    "author": "Bipul Chettri",
-                    "link": "https://www.youtube.com/watch?v=ENVW3uZ3a-4",
-                    "lyrics": "Intro"
-                },
-                {
-                    "id": "3002",
-                    "title": "Zeester met Koffie",
-                    "author": "Bart Peeters",
-                    "link": "https://www.youtube.com/watch?v=_TZh9Gd1uck",
-                    "lyrics": "Intro"
-                },
-                {
-                    "id": "3003",
-                    "title": "Ram Sailee",
-                    "author": "Bipul Chettri",
-                    "link": "https://www.youtube.com/watch?v=ENVW3uZ3a-4",
-                    "lyrics": "Intro"
-                }
-            ]
+            "songIds": [30000, 30001]
         },
         {
             "id": "2001",
             "name": "Hangout",
-            "songs":
-            [
-                {
-                    "id": "3000",
-                    "title": "Soren",
-                    "author": "beabadoobee",
-                    "link": "https://www.youtube.com/watch?v=NUENubp8g9M",
-                    "lyrics": "Intro"
-                }
-            ]
+            "songIds": [40000, 40001]
         },
         {
             "id": "2002",
             "name": "Antwerpen gig",
-            "songs": [
-                {
-                    "id": "3003",
-                    "title": "Cbat",
-                    "author": "Hudson Mohawke",
-                    "link": "https://www.youtube.com/watch?v=eN6jkWxxm2Y",
-                    "lyrics": "Really? This song?"
-                }
-            ]
+            "songIds": [50000]
         },
         {
             "id": "2003",
             "name": "Songs to practice",
-            "songs": [
-                {
-                    "id": "3004",
-                    "title": "Wonderwall",
-                    "author": "Oasis",
-                    "link": "https://www.youtube.com/watch?v=bx1Bh8ZvH84",
-                    "lyrics": "Intro"
-                },
-                {
-                    "id": "3005",
-                    "title": "Hamro Nepal Ma",
-                    "author": "Neetesh Jung Kunwar",
-                    "link": "https://www.youtube.com/watch?v=ubkwRMq50p8",
-                    "lyrics": "Intro"
-                }
-            ]
+            "songIds": [50001]
+        }
+    ],
+    "songs": [
+        {
+            "id": "30000",
+            "title": "Zeester met Koffie",
+            "author": "Bart Peeters",
+            "link": "https://www.youtube.com/watch?v=_TZh9Gd1uck",
+            "tuning": "EADGBE",
+            "capo": "No capo",
+            "lyrics": "Intro"
+        },
+        {
+            "id": "30001",
+            "title": "Ram Sailee (Ode to my Father)",
+            "author": "Bipul Chettri",
+            "link": "https://www.youtube.com/watch?v=ENVW3uZ3a-4",
+            "tuning": "EADGBE",
+            "capo": "No capo",
+            "lyrics": "Intro"
+        },
+        {
+            "id": "30002",
+            "title": "Zeester met Koffie",
+            "author": "Bart Peeters",
+            "link": "https://www.youtube.com/watch?v=_TZh9Gd1uck",
+            "tuning": "EADGBE",
+            "capo": "No capo",
+            "lyrics": "Intro"
+        },
+        {
+            "id": "40000",
+            "title": "Soren",
+            "author": "beabadoobee",
+            "link": "https://www.youtube.com/watch?v=NUENubp8g9M",
+            "tuning": "EADGBE",
+            "capo": "No capo",
+            "lyrics": "Intro"
+        },
+        {
+            "id": "40001",
+            "title": "Cbat",
+            "author": "Hudson Mohawke",
+            "link": "https://www.youtube.com/watch?v=eN6jkWxxm2Y",
+            "tuning": "EADGBE",
+            "capo": "No capo",
+            "lyrics": "Really? This song?"
+        },
+        {
+            "id": "50000",
+            "title": "Wonderwall",
+            "author": "Oasis",
+            "link": "https://www.youtube.com/watch?v=bx1Bh8ZvH84",
+            "tuning": "EADGBE",
+            "capo": "No capo",
+            "lyrics": "Intro"
+        },
+        {
+            "id": "50001",
+            "title": "Hamro Nepal Ma",
+            "author": "Neetesh Jung Kunwar",
+            "link": "https://www.youtube.com/watch?v=ubkwRMq50p8",
+            "tuning": "EADGBE",
+            "capo": "No capo",
+            "lyrics": "Intro"
         }
     ]
 }

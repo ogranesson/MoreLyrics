@@ -1,3 +1,12 @@
-<div *ngFor="let song of songs" (click)="selectSong(song)">
-    <p>Title: {{ song.title | titleshortener }} by {{ song.author }}</p>
+<ng-container *ngIf="songs.length > 0">
+<div *ngFor="let song of songs" (click)="selectSong(song)"
+class="rounded p-2 mb-2 transition hover:bg-blue-900 hover:text-white hover:cursor-pointer"
+[ngClass]="song.id === currentlySelectedSong?.id ? 'text-white bg-blue-900' : 'text-blue-500 bg-white'">
+    <p class="font-bold">{{ song.title | titleshortener }}</p>
+    <p>by {{ song.author }}</p>
+</div>
+</ng-container>
+
+<div *ngIf="songs.length == 0" class="text-center text-gray-400">
+    <p>Select a songbook to begin</p>
 </div>

@@ -12,8 +12,10 @@ import { Songbook } from '../models/songbook.model';
 export class ViewSongBookComponent {
   @Input('songbooksToChild') songbooks: Songbook[] = []
   @Output() selectedSongbook = new EventEmitter<Songbook>();
+  currentlySelectedSongbook: Songbook | null = null;
 
   selectSongbook(songbook: Songbook) {
-    this.selectedSongbook.emit(songbook); // Emit the selected songbook when clicked
+    this.selectedSongbook.emit(songbook);
+    this.currentlySelectedSongbook = songbook;
   }
 }

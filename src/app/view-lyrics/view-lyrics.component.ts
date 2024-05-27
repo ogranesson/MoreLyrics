@@ -1,5 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import { Song } from '../models/songbook.model';
+import { Song } from '../models/song.model';
 import { CommonModule } from '@angular/common';
 import { YoutubeLinkToEmbedPipe } from '../pipes/youtube-link-to-embed.pipe';
 import { SafePipe } from '../pipes/safe.pipe';
@@ -12,5 +12,5 @@ import { SafePipe } from '../pipes/safe.pipe';
   styleUrl: './view-lyrics.component.css'
 })
 export class ViewLyricsComponent {
-  @Input('songdataToChild') songdata!: Song;
+  @Input('songdataToChild') songdata: Song | null = null;
 }
