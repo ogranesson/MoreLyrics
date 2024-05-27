@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DataService } from '../data.service';
 import { TitleshortenerPipe } from '../pipes/titleshortener.pipe';
 import { Song } from '../models/song.model';
+import { Songbook } from '../models/songbook.model';
 
 @Component({
   selector: 'app-view-song',
@@ -13,6 +14,7 @@ import { Song } from '../models/song.model';
 })
 export class ViewSongComponent {
   @Input('songsToChild') songIds: number[] = [];
+  @Input('currentlySelectedSongbook') songbook: Songbook | null = null;
   @Output() selectedSong = new EventEmitter<Song>();
   songs: Song[] = [];
   currentlySelectedSong: Song | null = null;

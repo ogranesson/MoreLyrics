@@ -23,6 +23,7 @@ export class HomeComponent {
   songbooks: Songbook[] = [];
   songIds: number[] = [];
   songdata!: Song;
+  selectedSongbook: Songbook | null = null;
   songbookIdThroughParam: string | null = '';
   emptySong: Song = {
     id: '',
@@ -50,6 +51,7 @@ export class HomeComponent {
   }
   
   selectSongbook(songbook: Songbook) {
+    this.selectedSongbook = songbook;
     this.songIds = songbook.songIds;
     this.songdata = this.emptySong;
   }
