@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Songbook } from '../models/songbook.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { TitleshortenerPipe } from '../pipes/titleshortener.pipe';
 @Component({
   selector: 'app-all-songbooks',
   standalone: true,
-  imports: [CommonModule, TitleshortenerPipe],
+  imports: [CommonModule, TitleshortenerPipe, MatSnackBarModule],
   templateUrl: './all-songbooks.component.html',
   styleUrl: './all-songbooks.component.css',
   providers: [DataService]
@@ -38,7 +38,9 @@ export class AllSongbooksComponent {
 
         this.router.navigate(['/']).then(() => {
           this.snackbar.open(`The songbook ${name} has been deleted.`, 'Close', {
-            duration: 3000
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center'
           });
         });
         })

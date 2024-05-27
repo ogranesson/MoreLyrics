@@ -23,7 +23,7 @@
                         <div *ngIf="songForm.controls['author'].touched && songForm.controls['author'].errors?.['required']">Author is required.</div>
                     </div>
                 </div>
-                <input appTabspace id="author" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="title" type="text" required autocomplete="off">
+                <input appTabspace id="author" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="author" type="text" required autocomplete="off">
             </div>
 
             <div>
@@ -66,7 +66,7 @@
                         <div *ngIf="songForm.controls['link'].touched && songForm.controls['link'].errors?.['invalidYoutubeLink']">Link has to be a valid YouTube link.</div>
                     </div>
                 </div>
-                <input appTabspace id="link" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="link" type="text" required autocomplete="off" placeholder="YouTube video link, eg: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                <input appTabspace id="link" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="link" type="text" autocomplete="off" placeholder="YouTube video link, eg: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
             </div>
 
             <div class="flex flex-col">
