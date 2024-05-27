@@ -42,18 +42,17 @@ export class EditLyricsComponent {
 
     this.dataservice.getSong(this.songIdThroughParam).subscribe(song => {
       this.song = song;
+
+      this.songForm = this.fb.group({
+        title: [this.song.title, [Validators.required]],
+        author: [this.song.author, [Validators.required]],
+        tuning: [this.song.tuning, [Validators.required]],
+        capo: [this.song.capo, [Validators.required]],
+        link: [this.song.link, [youtubeLinkValidator()]],
+        lyrics: [this.song.lyrics, [Validators.required]]
+      });
     });
 
-    console.log(this.song);
-
-    this.songForm = this.fb.group({
-      title: [this.song.title, [Validators.required]],
-      author: [this.song.author, [Validators.required]],
-      tuning: [this.song.tuning, [Validators.required]],
-      capo: [this.song.capo, [Validators.required]],
-      link: [this.song.link, [youtubeLinkValidator()]],
-      lyrics: [this.song.lyrics, [Validators.required]]
-    });
   }
 
   onSubmit() {

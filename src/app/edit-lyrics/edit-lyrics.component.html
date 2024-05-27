@@ -10,7 +10,7 @@
                         <div *ngIf="songForm.controls['title'].touched && songForm.controls['title'].errors?.['required']">Title is required.</div>
                     </div>
                 </div>
-                <input [value]="song?.title" appTabspace id="title" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="title" type="text" required autocomplete="off">
+                <input appTabspace id="title" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="title" type="text" required autocomplete="off">
             </div>
             
             <div class="flex flex-col">
@@ -22,7 +22,7 @@
                         <div *ngIf="songForm.controls['author'].touched && songForm.controls['author'].errors?.['required']">Author is required.</div>
                     </div>
                 </div>
-                <input [value]="song?.author" appTabspace id="author" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="author" type="text" required autocomplete="off">
+                <input appTabspace id="author" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="author" type="text" required autocomplete="off">
             </div>
 
             <div class="flex flex-col">
@@ -34,7 +34,7 @@
                         <div *ngIf="songForm.controls['tuning'].touched && songForm.controls['tuning'].errors?.['required']">Tuning is required.</div>
                     </div>
                 </div>
-                <input [value]="song?.tuning" appTabspace id="tuning" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="tuning" type="text" required autocomplete="off" placeholder="Standard - EADGBE, Open G - DGDGBD, etc">
+                <input appTabspace id="tuning" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="tuning" type="text" required autocomplete="off" placeholder="Standard - EADGBE, Open G - DGDGBD, etc">
             </div>
 
             <div class="flex flex-col">
@@ -46,7 +46,7 @@
                         <div *ngIf="songForm.controls['capo'].touched && songForm.controls['capo'].errors?.['required']">Capo is required.</div>
                     </div>
                 </div>
-                <input [value]="song?.capo" appTabspace id="capo" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="capo" type="text" required autocomplete="off" placeholder="No capo, 1st fret, etc">
+                <input appTabspace id="capo" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="capo" type="text" required autocomplete="off" placeholder="No capo, 1st fret, etc">
             </div>
 
             <div class="flex flex-col">
@@ -58,7 +58,7 @@
                         <div *ngIf="songForm.controls['link'].touched && songForm.controls['link'].errors?.['invalidYoutubeLink']">Link has to be a valid YouTube link.</div>
                     </div>
                 </div>
-                <input [value]="song?.link" appTabspace id="link" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="link" type="text" autocomplete="off" placeholder="YouTube video link, eg: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                <input appTabspace id="link" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="link" type="text" autocomplete="off" placeholder="YouTube video link, eg: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
             </div>
 
             <div class="flex flex-col">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <pre>
-<textarea  [value]="song?.lyrics" appTabspace id="lyrics" class="border-2 border-gray-200 p-2 w-3/4 h-96 rounded shadow-sm mb-2" formControlName="lyrics" required></textarea>
+<textarea appTabspace id="lyrics" class="border-2 border-gray-200 p-2 w-3/4 h-96 rounded shadow-sm mb-2" formControlName="lyrics" required></textarea>
                 </pre>
             </div>
             <button type="submit" class="p-4 w-3/4 mb-4 rounded-lg bg-blue-900 hover:bg-blue-950 font-bold text-white disabled:bg-gray-400" [disabled]="!songForm.valid" (click)="onSubmit">Update Song</button>
