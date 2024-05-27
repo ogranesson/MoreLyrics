@@ -31,7 +31,17 @@ export class EditLyricsComponent {
   capo: string = "";
   lyrics: string = "";
 
-  constructor(private fb: FormBuilder, private dataservice: DataService, private http: HttpClient, private route: ActivatedRoute, private router: Router, private snackbar: MatSnackBar) { }
+  constructor(private fb: FormBuilder, private dataservice: DataService, private http: HttpClient, private route: ActivatedRoute, private router: Router, private snackbar: MatSnackBar)
+  {
+    this.songForm = this.fb.group({
+      title: ['', [Validators.required]],
+      author: ['', [Validators.required]],
+      tuning: ['', [Validators.required]],
+      capo: ['', [Validators.required]],
+      link: ['', [youtubeLinkValidator()]],
+      lyrics: ['', [Validators.required]]
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -44,12 +54,12 @@ export class EditLyricsComponent {
       this.song = song;
 
       this.songForm = this.fb.group({
-        title: [this.song.title, [Validators.required]],
-        author: [this.song.author, [Validators.required]],
-        tuning: [this.song.tuning, [Validators.required]],
-        capo: [this.song.capo, [Validators.required]],
-        link: [this.song.link, [youtubeLinkValidator()]],
-        lyrics: [this.song.lyrics, [Validators.required]]
+        title: [song.title, [Validators.required]],
+        author: [song.author, [Validators.required]],
+        tuning: [song.tuning, [Validators.required]],
+        capo: [song.capo, [Validators.required]],
+        link: [song.link, [youtubeLinkValidator()]],
+        lyrics: [song.lyrics, [Validators.required]]
       });
     });
 
@@ -57,15 +67,8 @@ export class EditLyricsComponent {
 
   onSubmit() {
     if (this.songForm.valid) {
-      const songFormData = {
-        id: this.song.id,
-        title: this.songForm.value.title,
-        author: this.songForm.value.author,
-        tuning: this.songForm.value.tuning,
-        capo: this.songForm.value.capo,
-        link: this.songForm.value.link,
-        lyrics: this.songForm.value.lyrics
-      };
+      const songFormData = this.songForm.value;
+      songFormData.id = this.song.id;
       this.dataservice.updateSong(songFormData).subscribe({
         next: (response) => {
           this.router.navigate(['/']).then(() => {

@@ -28,7 +28,7 @@ export class DataService {
   }
 
   updateSong(song: Song): Observable<Song> {
-    return this.http.put<Song>(`${this.url}/songs`, song);
+    return this.http.put<Song>(`${this.url}/songs/${song.id}`, song);
   }
 
   updateSongbook(songbook: Songbook): Observable<Songbook> {
