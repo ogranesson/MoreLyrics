@@ -5,11 +5,12 @@ import { Songbook } from '../models/songbook.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TitleshortenerPipe } from '../pipes/titleshortener.pipe';
+import { TitleBarComponent } from '../title-bar/title-bar.component';
 
 @Component({
   selector: 'app-all-songbooks',
   standalone: true,
-  imports: [CommonModule, TitleshortenerPipe, MatSnackBarModule],
+  imports: [CommonModule, TitleshortenerPipe, MatSnackBarModule, TitleBarComponent],
   templateUrl: './all-songbooks.component.html',
   styleUrl: './all-songbooks.component.css',
   providers: [DataService]
@@ -18,6 +19,7 @@ export class AllSongbooksComponent {
   constructor(private dataservice: DataService, private router: Router, private snackbar: MatSnackBar){}
   songbooks: Songbook[] = [];
   selectedSongbookId: string = '';
+  title: string = "All songbooks"
 
   ngOnInit() {
     this.dataservice.getSongbooks().subscribe(songbooks => {

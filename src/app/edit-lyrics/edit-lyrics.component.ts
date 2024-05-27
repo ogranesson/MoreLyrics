@@ -20,7 +20,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditLyricsComponent {
   songForm!: FormGroup;
-  title: string = "Add a new song"
+  title: string = "Edit song"
   song!: Song;
   songIdThroughParam!: string;
 
