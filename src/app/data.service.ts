@@ -16,15 +16,19 @@ export class DataService {
   }
 
   getSongsByIds(ids: number[]): Observable<Song[]> {
-    return forkJoin(ids.map(id => this.getSong(id)));
+    return forkJoin(ids.map(id => this.getSong(id.toString())));
   }
 
-  getSong(id: number): Observable<Song> {
+  getSong(id: string): Observable<Song> {
     return this.http.get<Song>(`${this.url}/songs/${id}`);
   }
 
   addSong(song: Song): Observable<Song> {
     return this.http.post<Song>(`${this.url}/songs`, song);
+  }
+
+  updateSong(song: Song): Observable<Song> {
+    return this.http.put<Song>(`${this.url}/songs`, song);
   }
 
   updateSongbook(songbook: Songbook): Observable<Songbook> {

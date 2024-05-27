@@ -1,12 +1,15 @@
 <ng-container *ngIf="songs.length > 0">
 <div class="flex flex-col mb-2">
-    <div>
+    <div class="w-full">
         <img src={{songbook?.img}} alt="songbook">
     </div>
-    <div class="my-2">
+    <div class="my-2 w-full">
         <div class="text-3xl font-bold">{{songbook?.name}}</div>
         <div>{{songbook?.description}}</div>
     </div>
+    <a class="w-full bg-blue-900 hover:bg-blue-950 text-white font-semibold text-center p-2 rounded-lg" href="/edit-songbook/{{songbook?.id}}">
+        Edit songbook
+    </a>
 </div>
 <div *ngFor="let song of songs" (click)="selectSong(song)"
 class="rounded p-2 mb-2 transition hover:bg-blue-900 hover:text-white hover:cursor-pointer"
