@@ -10,9 +10,20 @@ import { Songbook } from '../models/songbook.model';
   styleUrl: './view-song-book.component.css'
 })
 export class ViewSongBookComponent {
-  @Input('songbooksToChild') songbooks: Songbook[] = []
+  @Input('songbooksToChild') songbooks: Songbook[] = [];
+  @Input('receivedSongbookId') receivedSongbookId: string | null = '';
   @Output() selectedSongbook = new EventEmitter<Songbook>();
   currentlySelectedSongbook: Songbook | null = null;
+
+  ngOnChanges() {
+    if (this.receivedSongbookId) {
+      const songbook = this.songbooks.find(sb => sb.id === this.receivedSongbookId);
+      if (songbook) {
+        this.currentlySelectedSongbook = songbook;
+        this.selectedSongbook.emit(songbook);
+      }
+    }
+  }
 
   selectSongbook(songbook: Songbook) {
     this.selectedSongbook.emit(songbook);
