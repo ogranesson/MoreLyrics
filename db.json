@@ -7,7 +7,35 @@
       "img": "assets/default.png",
       "songIds": [
         30000,
-        30001
+        30001,
+        22792,
+        84172,
+        43685,
+        71770,
+        65387,
+        94848,
+        11764,
+        54457,
+        18005,
+        64375,
+        94202,
+        63426,
+        87818,
+        57357,
+        13602,
+        90905,
+        84814,
+        5122,
+        4630,
+        20260,
+        98261,
+        52111,
+        29727,
+        66424,
+        38365,
+        83580,
+        846,
+        2337
       ]
     },
     {
@@ -18,16 +46,12 @@
       "songIds": [
         40000,
         40001,
-        24669
-      ]
-    },
-    {
-      "id": "2002",
-      "name": "Antwerpen gig",
-      "description": "Scary!",
-      "img": "assets/default.png",
-      "songIds": [
-        50000
+        24669,
+        42388,
+        57433,
+        30147,
+        71061,
+        57377
       ]
     }
   ],
@@ -109,6 +133,321 @@
       "title": "aa",
       "author": "",
       "tuning": "aa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "22792",
+      "title": "aa",
+      "author": "aa",
+      "tuning": "aa",
+      "capo": "aa",
+      "link": "",
+      "lyrics": "aa"
+    },
+    {
+      "id": "84172",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aa",
+      "capo": "aa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "43685",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "71770",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "65387",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "94848",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "11764",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "54457",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "18005",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "64375",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "94202",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "63426",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "87818",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "57357",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "13602",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "90905",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "84814",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "5122",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "4630",
+      "title": "aaaaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaaa"
+    },
+    {
+      "id": "42388",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "57433",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "30147",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "71061",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "20260",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "98261",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "52111",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "29727",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "66424",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "38365",
+      "title": "aaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "83580",
+      "title": "aaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "846",
+      "title": "aaa",
+      "author": "aaaa",
+      "tuning": "aaaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "57377",
+      "title": "aaaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaa",
+      "link": "",
+      "lyrics": "aaa"
+    },
+    {
+      "id": "2337",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "45540",
+      "title": "aaa",
+      "author": "aaaa",
+      "tuning": "aaa",
+      "capo": "aaaa",
+      "link": "",
+      "lyrics": "aaaa"
+    },
+    {
+      "id": "29684",
+      "title": "aaa",
+      "author": "aaa",
+      "tuning": "aaa",
       "capo": "aaa",
       "link": "",
       "lyrics": "aaa"

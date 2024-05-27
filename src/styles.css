@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+mat-snack-bar-container {
+    position: fixed !important;
+    top: 5vh !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 1000 !important;
+}
+
+.snackbarWhite {
+    background-color: white;
+}
+
+.mdc-snackbar {
+    right: auto !important;
+}

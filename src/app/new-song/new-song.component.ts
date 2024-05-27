@@ -62,7 +62,8 @@ export class NewSongComponent {
           this.updateSongbook(newId);
           this.router.navigate(['/']).then(() => {
             this.snackbar.open(`New song ${songName} added`, 'Close', {
-              duration: 3000
+              duration: 3000,
+              panelClass: ['snackbarWhite']
             });
           });
         },

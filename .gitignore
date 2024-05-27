@@ -43,5 +43,4 @@ Thumbs.db
 package.json
 package-lock.json
 angular.json
-src/styles.css
 src/app/app.config.ts
