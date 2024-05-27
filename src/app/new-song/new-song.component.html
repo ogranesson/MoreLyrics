@@ -25,12 +25,14 @@
                 </div>
                 <input appTabspace id="author" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="title" type="text" required autocomplete="off">
             </div>
+
             <div>
                 <label class="block font-medium text-xl text-gray-700 mb-1">Songbook:</label>
                 <select formControlName="selectedSongbookId" class="border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2">
                     <option *ngFor="let songbook of songbooks" [value]="songbook.id">{{songbook.name}}</option>
                 </select>
             </div>
+
             <div class="flex flex-col">
                 <div class="flex flex-row w-3/5 justify-between items-center">
                     <div>
@@ -42,6 +44,7 @@
                 </div>
                 <input appTabspace id="tuning" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="tuning" type="text" required autocomplete="off" placeholder="Standard - EADGBE, Open G - DGDGBD, etc">
             </div>
+
             <div class="flex flex-col">
                 <div class="flex flex-row w-3/5 justify-between items-center">
                     <div>
@@ -53,6 +56,7 @@
                 </div>
                 <input appTabspace id="capo" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="capo" type="text" required autocomplete="off" placeholder="No capo, 1st fret, etc">
             </div>
+
             <div class="flex flex-col">
                 <div class="flex flex-row w-3/5 justify-between items-center">
                     <div>
@@ -64,13 +68,21 @@
                 </div>
                 <input appTabspace id="link" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="link" type="text" required autocomplete="off" placeholder="YouTube video link, eg: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
             </div>
-            <div>
-                <label class="block font-medium text-xl text-gray-700 mb-1">Lyrics:</label>
+
+            <div class="flex flex-col">
+                <div class="flex flex-row w-3/4 justify-between items-center">
+                    <div>
+                        <label for="lyrics" class="font-medium text-xl text-gray-700 mb-1">Lyrics and chords:</label>
+                    </div>
+                    <div class="text-red-500">
+                        <div *ngIf="songForm.controls['lyrics'].touched && songForm.controls['lyrics'].errors?.['required']">Lyrics are required (duh).</div>
+                    </div>
+                </div>
                 <pre>
-<textarea appTabspace class="border-2 border-gray-200 p-2 w-3/4 h-96 rounded shadow-sm mb-2" formControlName="lyrics" required></textarea>
+<textarea appTabspace id="lyrics" class="border-2 border-gray-200 p-2 w-3/4 h-96 rounded shadow-sm mb-2" formControlName="lyrics" required></textarea>
                 </pre>
             </div>
-            <button type="submit" class="p-4 rounded-lg bg-blue-900 hover:bg-blue-950 font-bold text-white disabled:bg-gray-400" [disabled]="!songForm.valid" (click)="onSubmit">Add Song</button>
+            <button type="submit" class="p-4 w-3/4 mb-4 rounded-lg bg-blue-900 hover:bg-blue-950 font-bold text-white disabled:bg-gray-400" [disabled]="!songForm.valid" (click)="onSubmit">Add Song</button>
         </form>
     </div>
 </div>

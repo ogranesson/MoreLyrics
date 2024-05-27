@@ -3,6 +3,7 @@
     {
       "id": "2000",
       "name": "Campfire",
+      "img": "assets/default.png",
       "songIds": [
         30000,
         30001
@@ -11,6 +12,7 @@
     {
       "id": "2001",
       "name": "Hangout",
+      "img": "assets/default.png",
       "songIds": [
         40000,
         40001,
@@ -20,6 +22,7 @@
     {
       "id": "2002",
       "name": "Antwerpen gig",
+      "img": "assets/default.png",
       "songIds": [
         50000
       ]
@@ -27,6 +30,7 @@
     {
       "id": "2003",
       "name": "Songs to practice",
+      "img": "assets/default.png",
       "songIds": [
         50001
       ]
