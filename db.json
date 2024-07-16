@@ -27,7 +27,8 @@
       "description": "Scary!",
       "img": "assets/default.png",
       "songIds": [
-        50000
+        50000,
+        "1524"
       ]
     },
     {
@@ -36,8 +37,32 @@
       "description": "Gotta go fast!",
       "img": "assets/default.png",
       "songIds": [
-        50001
+        50001,
+        "19082"
       ]
+    },
+    {
+      "id": "827",
+      "name": "New songbook",
+      "description": "Sparkling new",
+      "img": "assets/default.png",
+      "songIds": [
+        "15288"
+      ]
+    },
+    {
+      "id": "1598",
+      "name": "New songbook",
+      "description": "Sparkling new",
+      "img": "assets/default.png",
+      "songIds": []
+    },
+    {
+      "id": "8350",
+      "name": "New songbook",
+      "description": "Sparkling new",
+      "img": "assets/default.png",
+      "songIds": []
     }
   ],
   "songs": [
@@ -87,22 +112,22 @@
       "lyrics": "Really? This song?"
     },
     {
-      "id": "50000",
       "title": "Wonderwall",
       "author": "Oasis",
-      "link": "https://youtu.be/bx1Bh8ZvH84",
       "tuning": "EADGBE",
-      "capo": "No capo",
-      "lyrics": "Intro"
+      "capo": "2nd frett",
+      "link": "https://youtu.be/bx1Bh8ZvH84",
+      "lyrics": "[Intro]\nEm   G   D   A7sus4\nEm   G   D   A7sus4\nEm   G   D   A7sus4\nEm   G   D   A7sus4\n \n \n[Verse 1]\nEm       G\nToday is gonna be the day\n              D                  A7sus4\nThat they're gonna throw it back to you\nEm          G\nBy now you should've somehow\n    D                A7sus4\nRealised what you gotta do\n \nEm                   G\nI don't believe that anybody\n D           A7sus4              C D  A7sus4  A7sus4\nFeels the way I do about you now\n \n \n[Verse 2]\nEm           G\nBackbeat the word is on the street\n          D                 A7sus4\nThat the fire in your heart is out\nEm              G\nI'm sure you've heard it all before\n          D             A7sus4\nBut you never really had a doubt\nEm                   G       D\nI don't believe that anybody feels\n           A7sus4            Em  G  D  A7sus4\nThe way I do about you now\n \n \n[Pre-Chorus]\n     C                D            Em\nAnd all the roads we have to walk are winding\n     C                D                Em\nAnd all the lights that lead us there are blinding\n C              D\nThere are many things that I would\nG       D      Em\nLike to say to you\n       D      A7sus4\nBut I don't know how\n \n \n[Chorus]\n         C    Em  G\nBecause maybe\n        Em                   C        Em  G\nYou're gonna be the one that saves me?\n     Em   C  Em  G\nAnd after all\n                Em  C  Em  G   Em\nYou're my wonderwall\n \n \n[Verse 3]\nEm        G\nToday was gonna be the day\n             D                  A7sus4\nBut they'll never throw it back to you\nEm         G\nBy now you should've somehow\n    D                    A7sus4\nRealised what you're not to do\nEm                   G\nI don't believe that anybody\nD            A7sus4\nFeels the way I do\n           Em  G  D  A7sus4\nAbout you now\n \n \n[Pre-Chorus]\n     C                  D              Em\nAnd all the roads that lead you there are winding\n     C                   D             Em\nAnd all the lights that light the way are blinding\n C              D                  G       D      Em\nThere are many things that I would like to say to you\n       D      A7sus4\nBut I don't know how\n \n \n[Chorus]\n        C    Em  G\nI said maybe\n        Em                   C        Em  G\nYou're gonna be the one that saves me?\n     Em   C  Em  G\nAnd after all\n           Em   C   Em  G  Em\nYou're my wonderwall\n        C             Em   G\nI said maybe (I said maybe)\n        Em                   C        Em  G\nYou're gonna be the one that saves me?\n     Em   C  Em  G\nAnd after all\n           Em   C   Em  G  Em\nYou're my wonderwall\n        C             Em   G\nI said maybe (I said maybe)\n        Em                   C               Em      G\nYou're gonna be the one that saves me? (that saves me)\n        Em                   C               Em      G\nYou're gonna be the one that saves me? (that saves me)\n        Em                   C               Em      G  Em\nYou're gonna be the one that saves me? (that saves me)\n \n \n[Solo]\ne|--------3-0----|\nB|-1-0-1---------|\nG|---------------|\nD|---------------|   x8\nA|---------------|\nE|---------------|",
+      "id": "50000"
     },
     {
-      "id": "50001",
       "title": "Hamro Nepal Ma",
       "author": "Neetesh Jung Kunwar",
-      "link": "https://www.youtube.com/watch?v=ubkwRMq50p8",
       "tuning": "EADGBE",
-      "capo": "No capo",
-      "lyrics": "Intro"
+      "capo": "2nd fret",
+      "link": "https://www.youtube.com/watch?v=ubkwRMq50p8",
+      "lyrics": "[Verse]\nG               Cadd9\nGhar aagana ani saathi bhai\nEm7                 D\nDarshan namaste hai sabailai\nG                 Cadd9\nSukha dukha vannu yestai raichha\nEm7               D\nKo afno bidesh ma ko paraai\nCadd9            D\nThulaa sahar yahaa beglai sochaai\nCadd9            D\nAaipuge ma pani kei garna laai\nCadd9               D\nSabai lai samjahana mann bata nai\nCadd9             D\nAashaa cha maya yo namaros hai\n \n[Chorus]\nG                   Cadd9\nMero tana aile yaha vayae ni\nEm7               D         G         Cadd9\nMann vane saannani utaichha haamro Nepal ma\nEm7      D\nHamro Nepal ma\n \n[Verse]\nG            Cadd9\nMann thiyena yaha aauna lai\nEm7       D\nMari meti dhann kamauna lai\nG                  Cadd9\nk garnu desh bhari berojgaari\nEm7              D\nThaamna sakiyena riin ko bhaari\nCadd9          D\nAama meri timi kshitij paari\nCadd9                  D\nYaad aaucha jhalajhali mutu bhari\nCadd9              D\nBaba ra bahini lai thikai cha ni ?\nCadd9               D\nSamjhanchan hola ni malai pani ?\n \n[Chorus]\nG                   Cadd9\nMero tana aile yaha vayae ni\nEm7               D         G         Cadd9\nMann vane saannani utaichha haamro Nepal ma\nEm7      D\nHamro Nepal ma\n \n[Verse]\nG              Cadd9\nMaaya meri timi narunu hai\nEm7               D\nAaune chhu ma ali parkhanu hai\nG               Cadd9\nJindagi ma mero timi bahek\nEm7               D\nKoi chhaina chitta nadukhaunu hai\nCadd9               D\nSanchai chhu ma pira nalinu hai\nCadd9          D\nSamaya le kaha purai dyo khoi\n \n[Chorus]\nG                   Cadd9\nMero tana aile yaha vayae ni\nEm7               D         G         Cadd9\nMann vane saannani utaichha haamro Nepal ma\nEm7      D\nHamro Nepal ma hooo\n \nG                   Cadd9\nMero tana aile yaha vayae ni\nEm7               D         G         Cadd9\nMann vane saannani utaichha haamro Nepal ma\nEm7      D\nPyaro Nepal ma",
+      "id": "50001"
     },
     {
       "id": "82238",
@@ -112,6 +137,33 @@
       "capo": "qqq",
       "link": "",
       "lyrics": "ghghgh\nfgfgfg"
+    },
+    {
+      "id": "15288",
+      "title": "ssss",
+      "author": "ssss",
+      "tuning": "ssss",
+      "capo": "ssss",
+      "link": "",
+      "lyrics": "ssss"
+    },
+    {
+      "id": "1524",
+      "title": "Niet Verwacht",
+      "author": "YUKI",
+      "tuning": "EADGBE",
+      "capo": "4th fret",
+      "link": "https://www.youtube.com/watch?v=f5uDH8AW7DY&ab_channel=INDY",
+      "lyrics": "G Em C D\n\n                       G\nIk ging lekker op mijn eigen wereld\n\n                     Em\nNooit een blik op de toekomstbeelden"
+    },
+    {
+      "id": "19082",
+      "title": "Niet Verwacht",
+      "author": "YUKI",
+      "tuning": "EADBGE",
+      "capo": "4th fret",
+      "link": "https://www.youtube.com/watch?v=f5uDH8AW7DY&ab_channel=INDY",
+      "lyrics": "G Em C D\n\n                       G\nIk ging lekker in mijn eigen wereld"
     }
   ]
 }

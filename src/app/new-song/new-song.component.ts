@@ -77,7 +77,7 @@ export class NewSongComponent {
   updateSongbook(newSongId: string) {
     const songbook = this.songbooks.find(sb => sb.id === this.selectedSongbookId);
     if (songbook) {
-      songbook.songIds.push(Number(newSongId));
+      songbook.songIds.push(newSongId);
       this.dataservice.updateSongbook(songbook).subscribe({
         next: updatedSongbook => {
           console.log('Songbook updated successfully', updatedSongbook);

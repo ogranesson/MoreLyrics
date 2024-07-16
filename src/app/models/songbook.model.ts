@@ -3,6 +3,6 @@ export interface Songbook {
     name: string;
     description: string;
     img: string;
-    songIds: number[];
+    songIds: string[];
 }
 

@@ -4,6 +4,7 @@
         <app-view-song-book
         [songbooksToChild]="songbooks"
         [receivedSongbookId] = "songbookIdThroughParam"
+        (showAllSongs)="onShowAllSongs($event)"
         (selectedSongbook)="selectSongbook($event)">
         </app-view-song-book>
     </div>

@@ -13,7 +13,7 @@ import { Songbook } from '../models/songbook.model';
   styleUrl: './view-song.component.css'
 })
 export class ViewSongComponent {
-  @Input('songsToChild') songIds: number[] = [];
+  @Input('songsToChild') songIds: string[] = [];
   @Input('currentlySelectedSongbook') songbook: Songbook | null = null;
   @Output() selectedSong = new EventEmitter<Song>();
   songs: Song[] = [];

@@ -21,7 +21,7 @@ import { Song } from '../models/song.model';
 export class HomeComponent {
   title: string = "Your songbooks"
   songbooks: Songbook[] = [];
-  songIds: number[] = [];
+  songIds: string[] = [];
   songdata!: Song;
   selectedSongbook: Songbook | null = null;
   songbookIdThroughParam: string | null = '';
@@ -58,5 +58,19 @@ export class HomeComponent {
 
   selectSong(song: Song) {
     this.songdata = song;
+  }
+
+  onShowAllSongs(showAll: boolean) {
+    if (showAll) {
+      this.dataservice.getAllSongIds().subscribe(
+        (ids: string[]) => {
+          this.songIds = ids;
+          this.selectedSongbook = null;
+        },
+        error => {
+          console.error('Failed to get song IDs', error);
+        }
+      );
+    }
   }
 }
