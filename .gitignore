@@ -46,3 +46,4 @@ angular.json
 src/app/app.config.ts
 
 .DS_Store
+db.json
