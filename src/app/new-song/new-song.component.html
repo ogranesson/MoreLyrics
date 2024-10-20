@@ -70,6 +70,18 @@
             </div>
 
             <div class="flex flex-col">
+                <div class="flex flex-row w-3/5 justify-between items-center">
+                    <div>
+                        <label for="link" class="font-medium text-xl text-gray-700 mb-1">Link:</label>
+                    </div>
+                    <div class="text-red-500">
+                        <div *ngIf="songForm.controls['link'].touched && songForm.controls['link'].errors?.['invalidYoutubeLink']">Link has to be a valid YouTube link.</div>
+                    </div>
+                </div>
+                <input appTabspace id="link" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="link" type="text" autocomplete="off" placeholder="YouTube video link, eg: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+            </div>
+
+            <div class="flex flex-col">
                 <div class="flex flex-row w-3/4 justify-between items-center">
                     <div>
                         <label for="lyrics" class="font-medium text-xl text-gray-700 mb-1">Lyrics and chords:</label>

@@ -35,6 +35,10 @@ export class DataService {
     return this.http.post<Song>(`${this.url}/songs`, song);
   }
 
+  getSongbook(id: string): Observable<Songbook> {
+    return this.http.get<Songbook>(`${this.url}/songbooks/${id}`);
+  }
+
   addSongbook(songbook: Songbook): Observable<Songbook> {
     return this.http.post<Songbook>(`${this.url}/songbooks`, songbook);
   }
