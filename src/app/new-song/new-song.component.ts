@@ -3,7 +3,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { DataService } from '../data.service';
 import { Songbook } from '../models/songbook.model';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { youtubeLinkValidator } from '../validators/youtube-link-validator';
 import { TabspaceDirective } from '../directives/tabspace.directive';
@@ -13,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-song',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, TitleBarComponent, TabspaceDirective],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, TitleBarComponent, TabspaceDirective],
   templateUrl: './new-song.component.html',
   styleUrl: './new-song.component.css',
   providers: [DataService]
@@ -24,7 +23,7 @@ export class NewSongComponent {
   songbooks: Songbook[] = [];
   selectedSongbookId: string =  "";
 
-  constructor(private fb: FormBuilder, private dataservice: DataService, private http: HttpClient, private router: Router, private snackbar: MatSnackBar) { }
+  constructor(private readonly fb: FormBuilder, private readonly dataservice: DataService, private readonly router: Router, private readonly snackbar: MatSnackBar) { }
 
   ngOnInit() {
     this.songForm = this.fb.group({

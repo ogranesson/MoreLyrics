@@ -3,7 +3,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TitleBarComponent } from '../title-bar/title-bar.component';
 import { DataService } from '../data.service';
 import { Song } from '../models/song.model';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { youtubeLinkValidator } from '../validators/youtube-link-validator';
 import { TabspaceDirective } from '../directives/tabspace.directive';
@@ -13,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-edit-lyrics',
   standalone: true,
-  imports: [ FormsModule, ReactiveFormsModule, HttpClientModule, CommonModule, TabspaceDirective, TitleBarComponent],
+  imports: [ FormsModule, ReactiveFormsModule, CommonModule, TabspaceDirective, TitleBarComponent],
   templateUrl: './edit-lyrics.component.html',
   styleUrl: './edit-lyrics.component.css',
   providers: [DataService]
@@ -31,11 +30,11 @@ export class EditLyricsComponent {
   capo: string = "";
   lyrics: string = "";
 
-  constructor(private fb: FormBuilder, private dataservice: DataService, private http: HttpClient, private route: ActivatedRoute, private router: Router, private snackbar: MatSnackBar)
+  constructor(private readonly fb: FormBuilder, private readonly dataservice: DataService, private readonly route: ActivatedRoute, private readonly router: Router, private readonly snackbar: MatSnackBar)
   {
     this.songForm = this.fb.group({
       title: ['', [Validators.required]],
-      author: ['', [Validators.required]],
+      author: ['', [Validators.required]], 
       tuning: ['', [Validators.required]],
       capo: ['', [Validators.required]],
       link: ['', [youtubeLinkValidator()]],
