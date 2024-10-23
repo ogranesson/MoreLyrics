@@ -59,7 +59,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [ ] Host the application using Firebase Hosting
 
 ### 7. Documentation
-- [ ] Create a README file containing:
+- [x] Create a README file containing:
   - [ ] Firebase URL
   - [ ] Administrator credentials
 - [ ] Include the testing plan for the chosen component
@@ -68,12 +68,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [ ] Ensure Firestore rules and Firebase rules are included in the codebase
 
 ### 8. My own requirements:
- 
+
+- [ ] Make realtime updates reflect in both components
 - [ ] Add profile picture upload for songbooks
 - [ ] Fix songbook/song database clash
 - [ ] Add dates under songbook name
 - [ ] Fix layout
-  - [ ] Remove the second bar on the top
+  - [x] Remove the second bar on the top
 - [ ] Fix the regex (currently not highlighting the # in A/G#)
 
 ## Development server

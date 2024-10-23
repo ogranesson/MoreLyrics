@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Songbook } from '../models/songbook.model';
 import { DataService } from '../data.service';
+import { FirestoreService } from '../firestore.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +20,7 @@ export class ViewSongBookComponent {
   @Output() showAllSongs = new EventEmitter<boolean>();
   currentlySelectedSongbook: Songbook | null = null;
 
-  constructor(private dataservice: DataService, private router: Router) {}
+  constructor(private dataservice: DataService, private firestoreservice: FirestoreService, private router: Router) {}
 
   ngOnChanges() {
     if (this.receivedSongbookId) {
@@ -56,7 +57,7 @@ export class ViewSongBookComponent {
   }
 
   selectSongbook(songbook: Songbook) {
-    this.selectedSongbook.emit(songbook);
+    this.firestoreservice.selectSongbook(songbook); // instead of having to use input and output
     this.currentlySelectedSongbook = songbook;
   }
 }

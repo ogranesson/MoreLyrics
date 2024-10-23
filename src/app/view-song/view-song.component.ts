@@ -16,7 +16,7 @@ import { Songbook } from '../models/songbook.model';
 })
 export class ViewSongComponent {
   @Input('songsToChild') songIds: string[] = [];
-  @Input('currentlySelectedSongbook') songbook: Songbook | null = null;
+  currentlySelectedSongbook: Songbook | null = null;
   @Output() selectedSong = new EventEmitter<Song>();
   songSubscription!: Subscription;
   songs: Song[] = [];
@@ -25,17 +25,22 @@ export class ViewSongComponent {
   constructor(private dataService: DataService, private firestoreservice: FirestoreService) { }
 
   ngOnChanges() {
-    console.log(this.songIds);
+    this.firestoreservice.selectedSongbook.subscribe({
+      next:(songbook: Songbook) => {
+        this.currentlySelectedSongbook = songbook;
+        this.songIds = songbook.songIds;
 
-    this.songSubscription = this.firestoreservice.getSongs(this.songIds).subscribe({
-      next: (songs) => {
-        console.log(songs);
-        this.songs = songs;
-      },
-      error: (err) => {
-        console.error('An error occurred while fetching songs:', err);
+        this.songSubscription = this.firestoreservice.getSongs(this.songIds).subscribe({
+          next: (songs) => {
+            this.songs = songs;
+          },
+          error: (err) => {
+            console.error('An error occurred while fetching songs:', err);
+          }
+        });
       }
     });
+    console.log(this.songIds);
   }
 
   selectSong(song: Song) {

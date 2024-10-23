@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData, collection, CollectionReference, docData, DocumentReference, doc } from '@angular/fire/firestore';
-import { filter, Observable, map, take, combineLatest } from 'rxjs';
+import { Observable, Subject, map, combineLatest } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
 
@@ -10,6 +10,8 @@ import { Songbook } from './models/songbook.model';
 export class FirestoreService {
 
   constructor(private db: Firestore) { }
+
+  selectedSongbook = new Subject<Songbook>();
 
   getSongbooks(): Observable<Songbook[]> {
     return collectionData<Songbook>(
@@ -32,4 +34,7 @@ export class FirestoreService {
     );
   }
   
+  selectSongbook(songbook:Songbook) {
+    this.selectedSongbook.next(songbook);
+  }
 }
