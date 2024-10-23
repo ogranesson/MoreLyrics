@@ -23,7 +23,6 @@ import { Subscription } from 'rxjs';
 export class HomeComponent {
   title: string = "Your songbooks"
   songbooks: Songbook[] = [];
-  fsongbooks: Songbook[] = [];
   songbookSubscription!: Subscription;
   songIds: string[] = [];
   songdata!: Song;
@@ -42,20 +41,23 @@ export class HomeComponent {
   constructor(private dataservice: DataService, private firestoreservice: FirestoreService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      if (params['songbookId']) {
-        this.songbookIdThroughParam = params['songbookId'];
-      } else {
-        this.songbookIdThroughParam = null;
-      }
-    });
-    this.dataservice.getSongbooks().subscribe(songbooks => {
-      this.songbooks = songbooks;
-    });
+    // this.route.params.subscribe(params => {
+    //   if (params['songbookId']) {
+    //     this.songbookIdThroughParam = params['songbookId'];
+    //   } else {
+    //     this.songbookIdThroughParam = null;
+    //   }
+    // });
+    // this.dataservice.getSongbooks().subscribe(songbooks => {
+    //   this.songbooks = songbooks;
+    // });
 
     this.songbookSubscription = this.firestoreservice.getSongbooks().subscribe({
       next: (songbooks) => {
-        console.log(songbooks);
+        this.songbooks = songbooks;
+      },
+      error: (err) => {
+        console.error('An error occurred while fetching songbooks:', err);
       }
     });
   }
