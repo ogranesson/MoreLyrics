@@ -5,8 +5,8 @@ import { EditSongbookComponent } from './songbooks/edit-songbook/edit-songbook.c
 import { EditLyricsComponent } from './lyrics/edit-lyrics/edit-lyrics.component';
 import { AllSongbooksComponent } from './songbooks/all-songbooks/all-songbooks.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { RegisterComponent } from './auth/register/register/register.component';
-import { LoginComponent } from './auth/login/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
