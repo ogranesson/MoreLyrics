@@ -24,7 +24,7 @@ export class ViewSongComponent {
 
   constructor(private dataService: DataService, private firestoreservice: FirestoreService) { }
 
-  ngOnChanges() {
+  ngOnInit() {
     this.firestoreservice.selectedSongbook.subscribe({
       next:(songbook: Songbook) => {
         this.currentlySelectedSongbook = songbook;
@@ -41,6 +41,12 @@ export class ViewSongComponent {
       }
     });
     console.log(this.songIds);
+  }
+
+  ngOnDestroy() {
+    if (this.songSubscription) {
+      this.songSubscription.unsubscribe();
+    }
   }
 
   selectSong(song: Song) {

@@ -29,12 +29,21 @@ export class FirestoreService {
   }
   
   getSong(songId: string): Observable<Song | undefined> {
-    return docData<Song>(
+    return docData<Song>( // docData can return undefined, so have to cover for that
       doc(this.db, '/songs/' + songId) as DocumentReference<Song>
     );
   }
   
-  selectSongbook(songbook:Songbook) {
-    this.selectedSongbook.next(songbook);
+  selectSongbook(songbookId: string) {
+    const songbookReference = doc(this.db, '/songbooks/' + songbookId) as DocumentReference<Songbook>;
+
+    docData<Songbook>(songbookReference).subscribe((songbook: Songbook | undefined) => { // subscribing for real-time updates in both components
+      if (songbook) {
+        // Only emit if the songbook is not undefined
+        this.selectedSongbook.next(songbook);
+      } else {
+        console.error('Songbook not found');
+      }
+    });
   }
 }

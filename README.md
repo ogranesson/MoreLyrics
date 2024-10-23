@@ -25,16 +25,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - [ ] Component can be inside the lazy-loaded feature or separate
 
 ### 3. General Requirements
-- [ ] Create a data storage service and/or backend service
-- [ ] Implement routing with at least 3 different routes
-  - [ ] Include at least 1 child route
-  - [ ] Handle incorrectly entered routes
+- [x] Create a data storage service and/or backend service
+- [x] Implement routing with at least 3 different routes
+  - [x] Include at least 1 child route
+  - [x] Handle incorrectly entered routes
 - [ ] Implement routing guards
   - [ ] Create at least 2 different `canActivate` guards
   - [ ] Create at least 1 `canDeactivate` guard
-- [ ] Create at least 1 custom directive
+- [x] Create at least 1 custom directive
 - [ ] Implement at least 1 pipe to filter or sort data
-- [ ] Utilize at least 1 subject in the application
+- [x] Utilize at least 1 subject in the application
 - [ ] Define at least 3 access levels:
   - [ ] Not logged in => restricted access (login/registration)
   - [ ] Logged in => normal user access
@@ -51,7 +51,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [ ] Deploy the application via Firebase using the AOT principle
 
 ### 6. Firebase Setup
-- [ ] Configure Firebase Firestore database for data storage
+- [x] Configure Firebase Firestore database for data storage
 - [ ] Implement database access rules
   - [ ] Ensure different access levels for admin and normal users
 - [ ] Set up Firebase authentication using email and password
@@ -69,7 +69,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### 8. My own requirements:
 
-- [ ] Make realtime updates reflect in both components
+- [x] Make realtime updates reflect in both components
 - [ ] Add profile picture upload for songbooks
 - [ ] Fix songbook/song database clash
 - [ ] Add dates under songbook name

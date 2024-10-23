@@ -57,7 +57,7 @@ export class ViewSongBookComponent {
   }
 
   selectSongbook(songbook: Songbook) {
-    this.firestoreservice.selectSongbook(songbook); // instead of having to use input and output
+    this.firestoreservice.selectSongbook(songbook.id); // instead of having to use input and output
     this.currentlySelectedSongbook = songbook;
   }
 }
