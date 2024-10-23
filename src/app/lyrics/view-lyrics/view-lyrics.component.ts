@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { YoutubeLinkToEmbedPipe } from '../../pipes/youtube-link-to-embed.pipe';
 import { SafePipe } from '../../pipes/safe.pipe';
 import { LyricsFormatPipe } from '../../pipes/lyrics-format.pipe';
+import { FirestoreService } from '../../firestore.service';
 
 @Component({
   selector: 'app-view-lyrics',
@@ -13,5 +14,15 @@ import { LyricsFormatPipe } from '../../pipes/lyrics-format.pipe';
   styleUrl: './view-lyrics.component.css'
 })
 export class ViewLyricsComponent {
-  @Input('songdataToChild') songdata: Song | null = null;
+  songdata!: Song | null;
+
+  constructor(private firestoreservice: FirestoreService) { }
+
+  ngOnInit() {
+    this.firestoreservice.selectedSong.subscribe({
+      next:(song: Song) => {
+        this.songdata = song;
+      }
+    });
+  }
 }

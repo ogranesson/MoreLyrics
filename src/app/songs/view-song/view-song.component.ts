@@ -50,7 +50,8 @@ export class ViewSongComponent {
   }
 
   selectSong(song: Song) {
-    this.selectedSong.emit(song);
+    console.log(song);
+    this.firestoreservice.selectSong(song.id);
     this.currentlySelectedSong = song;
   }
 }

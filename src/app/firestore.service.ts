@@ -12,6 +12,7 @@ export class FirestoreService {
   constructor(private db: Firestore) { }
 
   selectedSongbook = new Subject<Songbook>();
+  selectedSong = new Subject<Song>();
 
   getSongbooks(): Observable<Songbook[]> {
     return collectionData<Songbook>(
@@ -30,7 +31,8 @@ export class FirestoreService {
   
   getSong(songId: string): Observable<Song | undefined> {
     return docData<Song>( // docData can return undefined, so have to cover for that
-      doc(this.db, '/songs/' + songId) as DocumentReference<Song>
+      doc(this.db, '/songs/' + songId) as DocumentReference<Song>,
+      {idField: "id"}
     );
   }
   
@@ -43,6 +45,18 @@ export class FirestoreService {
         this.selectedSongbook.next(songbook);
       } else {
         console.error('Songbook not found');
+      }
+    });
+  }
+
+  selectSong(songId: string) {
+    const songReference = doc(this.db, '/songs/' + songId) as DocumentReference<Song>;
+    
+    docData<Song>(songReference).subscribe((song: Song | undefined) => { // subscribing for real-time updates in both components
+      if (song) {
+        this.selectedSong.next(song);
+      } else {
+        console.error('Song not found');
       }
     });
   }

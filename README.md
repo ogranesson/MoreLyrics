@@ -75,7 +75,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [ ] Add dates under songbook name
 - [ ] Fix layout
   - [x] Remove the second bar on the top
-- [ ] Fix the regex (currently not highlighting the # in A/G#)
+- [x] Fix the regex (currently not highlighting the # in A/G#)
 
 ## Development server
 
