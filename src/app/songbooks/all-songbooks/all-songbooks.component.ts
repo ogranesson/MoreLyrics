@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
-import { DataService } from '../data.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { Songbook } from '../models/songbook.model';
+import { DataService } from '../../data.service';
+import { Songbook } from '../../models/songbook.model';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { TitleshortenerPipe } from '../pipes/titleshortener.pipe';
-import { TitleBarComponent } from '../title-bar/title-bar.component';
+import { TitleshortenerPipe } from '../../pipes/titleshortener.pipe';
 
 @Component({
   selector: 'app-all-songbooks',
   standalone: true,
-  imports: [CommonModule, TitleshortenerPipe, MatSnackBarModule, TitleBarComponent],
+  imports: [CommonModule, TitleshortenerPipe, MatSnackBarModule],
   templateUrl: './all-songbooks.component.html',
   styleUrl: './all-songbooks.component.css',
   providers: [DataService]

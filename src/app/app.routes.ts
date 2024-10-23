@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { NewSongComponent } from './new-song/new-song.component';
-import { EditSongbookComponent } from './edit-songbook/edit-songbook.component';
-import { EditLyricsComponent } from './edit-lyrics/edit-lyrics.component';
-import { AllSongbooksComponent } from './all-songbooks/all-songbooks.component';
+import { NewSongComponent } from './songs/new-song/new-song.component';
+import { EditSongbookComponent } from './songbooks/edit-songbook/edit-songbook.component';
+import { EditLyricsComponent } from './lyrics/edit-lyrics/edit-lyrics.component';
+import { AllSongbooksComponent } from './songbooks/all-songbooks/all-songbooks.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [

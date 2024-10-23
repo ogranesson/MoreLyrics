@@ -1,8 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Songbook } from '../models/songbook.model';
-import { DataService } from '../data.service';
-import { FirestoreService } from '../firestore.service';
+import { Songbook } from '../../models/songbook.model';
+import { FirestoreService } from '../../firestore.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,6 @@ import { Router } from '@angular/router';
   imports: [CommonModule],
   templateUrl: './view-song-book.component.html',
   styleUrl: './view-song-book.component.css',
-  providers: [DataService]
 })
 export class ViewSongBookComponent {
   @Input('songbooksToChild') songbooks: Songbook[] = [];
@@ -20,7 +18,7 @@ export class ViewSongBookComponent {
   @Output() showAllSongs = new EventEmitter<boolean>();
   currentlySelectedSongbook: Songbook | null = null;
 
-  constructor(private dataservice: DataService, private firestoreservice: FirestoreService, private router: Router) {}
+  constructor(private firestoreservice: FirestoreService, private router: Router) {}
 
   ngOnChanges() {
     if (this.receivedSongbookId) {
@@ -46,14 +44,14 @@ export class ViewSongBookComponent {
       songIds: [],
     };
 
-    this.dataservice.addSongbook(songbookFormData).subscribe({
-      next: (response) => {
-        location.reload();
-      },
-      error: error => {
-        console.error('Error adding songbook:', error);
-      }
-    });
+    // this.dataservice.addSongbook(songbookFormData).subscribe({
+    //   next: (response) => {
+    //     location.reload();
+    //   },
+    //   error: error => {
+    //     console.error('Error adding songbook:', error);
+    //   }
+    // });
   }
 
   selectSongbook(songbook: Songbook) {

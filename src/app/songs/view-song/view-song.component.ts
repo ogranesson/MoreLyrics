@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataService } from '../data.service';
-import { FirestoreService } from '../firestore.service';
-import { TitleshortenerPipe } from '../pipes/titleshortener.pipe';
+import { DataService } from '../../data.service';
+import { FirestoreService } from '../../firestore.service';
+import { TitleshortenerPipe } from '../../pipes/titleshortener.pipe';
 import { Subscription } from 'rxjs';
-import { Song } from '../models/song.model';
-import { Songbook } from '../models/songbook.model';
+import { Song } from '../../models/song.model';
+import { Songbook } from '../../models/songbook.model';
 
 @Component({
   selector: 'app-view-song',

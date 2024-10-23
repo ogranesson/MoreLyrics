@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TitleBarComponent } from '../title-bar/title-bar.component';
-import { DataService } from '../data.service';
-import { Song } from '../models/song.model';
+import { DataService } from '../../data.service';
+import { Song } from '../../models/song.model';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { youtubeLinkValidator } from '../validators/youtube-link-validator';
-import { TabspaceDirective } from '../directives/tabspace.directive';
+import { youtubeLinkValidator } from '../../validators/youtube-link-validator';
+import { TabspaceDirective } from '../../directives/tabspace.directive';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-lyrics',
   standalone: true,
-  imports: [ FormsModule, ReactiveFormsModule, CommonModule, TabspaceDirective, TitleBarComponent],
+  imports: [ FormsModule, ReactiveFormsModule, CommonModule, TabspaceDirective],
   templateUrl: './edit-lyrics.component.html',
   styleUrl: './edit-lyrics.component.css',
   providers: [DataService]

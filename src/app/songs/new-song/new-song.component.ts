@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TitleBarComponent } from '../title-bar/title-bar.component';
-import { DataService } from '../data.service';
-import { Songbook } from '../models/songbook.model';
+import { DataService } from '../../data.service';
+import { Songbook } from '../../models/songbook.model';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { youtubeLinkValidator } from '../validators/youtube-link-validator';
-import { TabspaceDirective } from '../directives/tabspace.directive';
+import { youtubeLinkValidator } from '../../validators/youtube-link-validator';
+import { TabspaceDirective } from '../../directives/tabspace.directive';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-song',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, TitleBarComponent, TabspaceDirective],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, TabspaceDirective],
   templateUrl: './new-song.component.html',
   styleUrl: './new-song.component.css',
   providers: [DataService]
