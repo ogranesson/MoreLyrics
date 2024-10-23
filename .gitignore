@@ -44,6 +44,7 @@ package.json
 package-lock.json
 angular.json
 src/app/app.config.ts
+src/environments
 
 .DS_Store
 db.json

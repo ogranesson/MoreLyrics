@@ -7,8 +7,10 @@ import { ViewSongBookComponent } from '../view-song-book/view-song-book.componen
 import { EditLyricsComponent } from '../edit-lyrics/edit-lyrics.component';
 import { EditSongbookComponent } from '../edit-songbook/edit-songbook.component';
 import { DataService } from '../data.service';
+import { FirestoreService } from '../firestore.service';
 import { Songbook } from '../models/songbook.model';
 import { Song } from '../models/song.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +23,8 @@ import { Song } from '../models/song.model';
 export class HomeComponent {
   title: string = "Your songbooks"
   songbooks: Songbook[] = [];
+  fsongbooks: Songbook[] = [];
+  songbookSubscription!: Subscription;
   songIds: string[] = [];
   songdata!: Song;
   selectedSongbook: Songbook | null = null;
@@ -35,7 +39,7 @@ export class HomeComponent {
     lyrics: ''
   };
 
-  constructor(private dataservice: DataService, private route: ActivatedRoute) {}
+  constructor(private dataservice: DataService, private firestoreservice: FirestoreService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -47,6 +51,12 @@ export class HomeComponent {
     });
     this.dataservice.getSongbooks().subscribe(songbooks => {
       this.songbooks = songbooks;
+    });
+
+    this.songbookSubscription = this.firestoreservice.getSongbooks().subscribe({
+      next: (songbooks) => {
+        console.log(songbooks);
+      }
     });
   }
   
