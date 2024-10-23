@@ -5,6 +5,8 @@ import { EditSongbookComponent } from './songbooks/edit-songbook/edit-songbook.c
 import { EditLyricsComponent } from './lyrics/edit-lyrics/edit-lyrics.component';
 import { AllSongbooksComponent } from './songbooks/all-songbooks/all-songbooks.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RegisterComponent } from './auth/register/register/register.component';
+import { LoginComponent } from './auth/login/login/login.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -14,5 +16,7 @@ export const routes: Routes = [
     {path: 'edit-lyrics/:songId', component: EditLyricsComponent},
     {path: 'new-song', component: NewSongComponent},
     {path: 'all-songbooks', component: AllSongbooksComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'login', component: LoginComponent},
     {path: '**', component: PageNotFoundComponent},
 ];
