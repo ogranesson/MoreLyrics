@@ -20,16 +20,6 @@ export class ViewSongBookComponent {
 
   constructor(private firestoreservice: FirestoreService, private router: Router) {}
 
-  ngOnChanges() {
-    if (this.receivedSongbookId) {
-      const songbook = this.songbooks.find(sb => sb.id === this.receivedSongbookId);
-      if (songbook) {
-        this.currentlySelectedSongbook = songbook;
-        this.selectedSongbook.emit(songbook);
-      }
-    }
-  }
-
   allSongs() {
     this.showAllSongs.emit(true); 
     this.currentlySelectedSongbook = null;
