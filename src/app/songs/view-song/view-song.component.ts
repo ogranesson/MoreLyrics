@@ -39,7 +39,6 @@ export class ViewSongComponent {
         });
       }
     });
-    console.log(this.songIds);
   }
 
   ngOnDestroy() {
