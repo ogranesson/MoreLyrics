@@ -70,6 +70,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### 8. My own requirements:
 
 - [x] Make realtime updates reflect in both components
+- [x] Make a logo
 - [ ] Add profile picture upload for songbooks
 - [ ] Fix songbook/song database clash
 - [ ] Add dates under songbook name
