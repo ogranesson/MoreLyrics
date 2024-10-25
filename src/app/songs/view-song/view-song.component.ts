@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataService } from '../../data.service';
 import { FirestoreService } from '../../firestore.service';
 import { TitleshortenerPipe } from '../../pipes/titleshortener.pipe';
 import { Subscription } from 'rxjs';
@@ -22,7 +21,7 @@ export class ViewSongComponent {
   songs: Song[] = [];
   currentlySelectedSong: Song | null = null;
 
-  constructor(private dataService: DataService, private firestoreservice: FirestoreService) { }
+  constructor(private firestoreservice: FirestoreService) { }
 
   ngOnInit() {
     this.firestoreservice.selectedSongbook.subscribe({

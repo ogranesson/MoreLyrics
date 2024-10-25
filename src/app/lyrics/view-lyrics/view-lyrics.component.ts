@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Song } from '../../models/song.model';
 import { CommonModule } from '@angular/common';
 import { YoutubeLinkToEmbedPipe } from '../../pipes/youtube-link-to-embed.pipe';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { LyricsFormatPipe } from '../../pipes/lyrics-format.pipe';
 import { FirestoreService } from '../../firestore.service';
 
