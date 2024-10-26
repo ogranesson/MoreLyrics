@@ -14,9 +14,8 @@ import { Songbook } from '../../models/songbook.model';
   styleUrl: './view-song.component.css'
 })
 export class ViewSongComponent {
-  @Input('songsToChild') songIds: string[] = [];
+  songIds: string[] = [];
   currentlySelectedSongbook: Songbook | null = null;
-  @Output() selectedSong = new EventEmitter<Song>();
   songSubscription!: Subscription;
   songs: Song[] = [];
   currentlySelectedSong: Song | null = null;

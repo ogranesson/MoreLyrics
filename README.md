@@ -71,6 +71,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - [x] Make realtime updates reflect in both components
 - [x] Make a logo
+- [ ] Fix layout for phones
 - [ ] Add profile picture upload for songbooks
 - [ ] Fix songbook/song database clash
 - [ ] Add dates under songbook name

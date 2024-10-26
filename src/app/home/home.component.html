@@ -1,19 +1,11 @@
-<div class="p-3 grid grid-cols-6 gap-2">
-    <div class="p-3 bg-gray-200 rounded h-full min-h-screen">
-        <app-view-song-book
-        [songbooksToChild]="songbooks"
-        [receivedSongbookId] = "songbookIdThroughParam"
-        (showAllSongs)="onShowAllSongs($event)"
-        (selectedSongbook)="selectSongbook($event)">
-        </app-view-song-book>
+<div class="p-3 grid md:grid-cols-[250px_250px_1fr] flex-row gap-2 h-[calc(100vh-68px)]">
+    <div class="p-3 bg-gray-200 rounded">
+        <app-view-song-book></app-view-song-book>
     </div>
-    <div class="p-3 bg-gray-200 rounded h-full min-h-screen">
-        <app-view-song
-        [songsToChild]="songIds"
-        (selectedSong)="selectSong($event)"
-        ></app-view-song>
+    <div class="p-3 bg-gray-200 rounded">
+        <app-view-song></app-view-song>
     </div>
-    <div class="p-3 bg-gray-200 rounded h-full min-h-screen col-span-4">
+    <div class="p-3 bg-gray-200 rounded overflow-y-auto">
         <app-view-lyrics
         ></app-view-lyrics>
     </div>

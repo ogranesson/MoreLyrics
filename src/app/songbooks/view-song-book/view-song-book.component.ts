@@ -1,8 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Songbook } from '../../models/songbook.model';
 import { FirestoreService } from '../../firestore.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-view-song-book',
@@ -11,17 +12,36 @@ import { Router } from '@angular/router';
   templateUrl: './view-song-book.component.html',
   styleUrl: './view-song-book.component.css',
 })
-export class ViewSongBookComponent {
-  @Input('songbooksToChild') songbooks: Songbook[] = [];
-  @Input('receivedSongbookId') receivedSongbookId: string | null = '';
-  @Output() selectedSongbook = new EventEmitter<Songbook>();
-  @Output() showAllSongs = new EventEmitter<boolean>();
+export class ViewSongBookComponent implements OnInit{
+  songbooks: Songbook[] = [];
+  songbookSubscription!: Subscription;
   currentlySelectedSongbook: Songbook | null = null;
 
   constructor(private firestoreservice: FirestoreService, private router: Router) {}
 
+  ngOnInit() {
+    // this.route.params.subscribe(params => {
+    //   if (params['songbookId']) {
+    //     this.songbookIdThroughParam = params['songbookId'];
+    //   } else {
+    //     this.songbookIdThroughParam = null;
+    //   }
+    // });
+    // this.dataservice.getSongbooks().subscribe(songbooks => {
+    //   this.songbooks = songbooks;
+    // });
+
+    this.songbookSubscription = this.firestoreservice.getSongbooks().subscribe({
+      next: (songbooks) => {
+        this.songbooks = songbooks;
+      },
+      error: (err) => {
+        console.error('An error occurred while fetching songbooks:', err);
+      }
+    });
+  }
+
   allSongs() {
-    this.showAllSongs.emit(true); 
     this.currentlySelectedSongbook = null;
   }
 
