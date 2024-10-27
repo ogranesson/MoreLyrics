@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from '../../data.service';
+import { FirestoreService } from '../../firestore.service';
 import { Song } from '../../models/song.model';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { youtubeLinkValidator } from '../../validators/youtube-link-validator';
@@ -29,7 +30,7 @@ export class EditLyricsComponent {
   capo: string = "";
   lyrics: string = "";
 
-  constructor(private readonly fb: FormBuilder, private readonly dataservice: DataService, private readonly route: ActivatedRoute, private readonly router: Router, private readonly snackbar: MatSnackBar)
+  constructor(private readonly fb: FormBuilder, private readonly firestoreservice: FirestoreService, private readonly route: ActivatedRoute, private readonly router: Router, private readonly snackbar: MatSnackBar)
   {
     this.songForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -48,7 +49,7 @@ export class EditLyricsComponent {
       }
     });
 
-    this.dataservice.getSong(this.songIdThroughParam).subscribe(song => {
+    this.firestoreservice.getSong(this.songIdThroughParam).subscribe(song => {
       this.song = song;
 
       this.songForm = this.fb.group({
@@ -64,22 +65,22 @@ export class EditLyricsComponent {
   }
 
   onSubmit() {
-    if (this.songForm.valid) {
-      const songFormData = this.songForm.value;
-      songFormData.id = this.song.id;
-      this.dataservice.updateSong(songFormData).subscribe({
-        next: (response) => {
-          this.router.navigate(['/']).then(() => {
-            this.snackbar.open(`Song ${this.songForm.value.title} updated`, 'Close', {
-              duration: 3000,
-              panelClass: ['snackbarWhite']
-            });
-          });
-        },
-        error: error => {
-          console.error('Error updating song:', error);
-        }
-      });
+  //   if (this.songForm.valid) {
+  //     const songFormData = this.songForm.value;
+  //     songFormData.id = this.song.id;
+  //     this.dataservice.updateSong(songFormData).subscribe({
+  //       next: (response) => {
+  //         this.router.navigate(['/']).then(() => {
+  //           this.snackbar.open(`Song ${this.songForm.value.title} updated`, 'Close', {
+  //             duration: 3000,
+  //             panelClass: ['snackbarWhite']
+  //           });
+  //         });
+  //       },
+  //       error: error => {
+  //         console.error('Error updating song:', error);
+  //       }
+  //     });
+  //   }
     }
-  }
 }

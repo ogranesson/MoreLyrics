@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData, collection, CollectionReference, docData, DocumentReference, doc } from '@angular/fire/firestore';
-import { Observable, Subject, map, combineLatest } from 'rxjs';
+import { Observable, Subject, map, combineLatest, filter } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
 
@@ -29,10 +29,11 @@ export class FirestoreService {
     );
   }
   
-  getSong(songId: string): Observable<Song | undefined> {
+  getSong(songId: string): Observable<Song> {
     return docData<Song>( // docData can return undefined, so have to cover for that
       doc(this.db, '/songs/' + songId) as DocumentReference<Song>,
-      {idField: "id"}
+      {idField: "id"}).pipe(
+        filter((song): song is Song => !!song) // Only emit if song is not undefined
     );
   }
   
