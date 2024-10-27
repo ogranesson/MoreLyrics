@@ -39,7 +39,7 @@ export class FirestoreService {
   selectSongbook(songbookId: string) {
     const songbookReference = doc(this.db, '/songbooks/' + songbookId) as DocumentReference<Songbook>;
 
-    docData<Songbook>(songbookReference).subscribe((songbook: Songbook | undefined) => { // subscribing for real-time updates in both components
+    docData<Songbook>(songbookReference, {idField: "id"}).subscribe((songbook: Songbook | undefined) => { // subscribing for real-time updates in both components
       if (songbook) {
         // Only emit if the songbook is not undefined
         this.selectedSongbook.next(songbook);
@@ -52,7 +52,7 @@ export class FirestoreService {
   selectSong(songId: string) {
     const songReference = doc(this.db, '/songs/' + songId) as DocumentReference<Song>;
     
-    docData<Song>(songReference).subscribe((song: Song | undefined) => { // subscribing for real-time updates in both components
+    docData<Song>(songReference, {idField: "id"}).subscribe((song: Song | undefined) => { // subscribing for real-time updates in both components
       if (song) {
         this.selectedSong.next(song);
       } else {
