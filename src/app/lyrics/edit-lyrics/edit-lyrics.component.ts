@@ -5,6 +5,7 @@ import { FirestoreService } from '../../firestore.service';
 import { Song } from '../../models/song.model';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { youtubeLinkValidator } from '../../validators/youtube-link-validator';
+import { LyricsFormatPipe } from '../../pipes/lyrics-format.pipe';
 import { TabspaceDirective } from '../../directives/tabspace.directive';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,7 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   imports: [ FormsModule, ReactiveFormsModule, CommonModule, TabspaceDirective],
   templateUrl: './edit-lyrics.component.html',
   styleUrl: './edit-lyrics.component.css',
-  providers: [DataService]
+  providers: [DataService, LyricsFormatPipe]
 })
 export class EditLyricsComponent {
   songForm!: FormGroup;
@@ -23,14 +24,9 @@ export class EditLyricsComponent {
   song!: Song;
   songIdThroughParam!: string;
 
-  songTitle: string = "";
-  author: string = "";
-  link: string = "";
-  tuning: string = "";
-  capo: string = "";
   lyrics: string = "";
 
-  constructor(private readonly fb: FormBuilder, private readonly firestoreservice: FirestoreService, private readonly route: ActivatedRoute, private readonly router: Router, private readonly snackbar: MatSnackBar)
+  constructor(private readonly fb: FormBuilder, private lyricsformatpipe: LyricsFormatPipe, private readonly firestoreservice: FirestoreService, private readonly route: ActivatedRoute, private readonly router: Router, private readonly snackbar: MatSnackBar)
   {
     this.songForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -52,13 +48,15 @@ export class EditLyricsComponent {
     this.firestoreservice.getSong(this.songIdThroughParam).subscribe(song => {
       this.song = song;
 
+      this.lyrics = this.lyricsformatpipe.transformText(this.song.lyrics);
+
       this.songForm = this.fb.group({
         title: [song.title, [Validators.required]],
         author: [song.author, [Validators.required]],
         tuning: [song.tuning, [Validators.required]],
         capo: [song.capo, [Validators.required]],
         link: [song.link, [youtubeLinkValidator()]],
-        lyrics: [song.lyrics, [Validators.required]]
+        lyrics: [this.lyrics, [Validators.required]]
       });
     });
 
