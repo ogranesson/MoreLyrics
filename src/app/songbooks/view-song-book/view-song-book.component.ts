@@ -46,13 +46,15 @@ export class ViewSongBookComponent implements OnInit{
   }
 
   newSongbook() {
-    const songbookFormData = {
-      id: Math.floor(Math.random() * 10000).toString(),
-      name: 'New songbook',
-      description: 'Sparkling new',
-      img: 'assets/default.png',
-      songIds: [],
+    const newSongbook: Songbook = {
+      id: "",
+      name: "New songbook",
+      description: "",
+      img: "assets/default.png",
+      songIds: []
     };
+    
+    this.firestoreservice.createSongbook(newSongbook);
 
     // this.dataservice.addSongbook(songbookFormData).subscribe({
     //   next: (response) => {
