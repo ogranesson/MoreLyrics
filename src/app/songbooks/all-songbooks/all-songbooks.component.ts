@@ -25,6 +25,7 @@ export class AllSongbooksComponent implements OnDestroy {
     this.songbookSubscription = this.firestoreservice.getSongbooks().subscribe({
       next: (songbooks) => {
         this.songbooks = songbooks;
+        this.songbooks.sort((a, b) => a.name.localeCompare(b.name));
       },
       error: (err) => {
         console.error('An error occurred while fetching songbooks:', err);
