@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, CollectionReference, docData, DocumentReference, doc } from '@angular/fire/firestore';
-import { Observable, Subject, map, combineLatest, filter } from 'rxjs';
+import { Firestore, collectionData, collection, CollectionReference, docData, DocumentReference, doc, updateDoc } from '@angular/fire/firestore';
+import { Observable, Subject, map, combineLatest, filter, from } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
 
@@ -60,5 +60,10 @@ export class FirestoreService {
         console.error('Song not found');
       }
     });
+  }
+
+  updateSong(song: Song, songId: string): Observable<void> {
+    const songReference = doc(this.db, `songs/${songId}`) as DocumentReference<Song>;
+    return from(updateDoc(songReference, { ...song }));
   }
 }

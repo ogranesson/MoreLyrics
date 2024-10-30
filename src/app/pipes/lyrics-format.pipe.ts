@@ -17,4 +17,9 @@ export class LyricsFormatPipe implements PipeTransform {
     return lyrics.replace(/\\t/g, '    ')
                   .replace(/\\n/g, '\n');
   }
+
+  reverse(lyrics: string): string {
+    return lyrics.replace(/    /g, '\\t')
+                  .replace(/\n/g, '\\n');
+  }
 }

@@ -63,22 +63,21 @@ export class EditLyricsComponent {
   }
 
   onSubmit() {
-  //   if (this.songForm.valid) {
-  //     const songFormData = this.songForm.value;
-  //     songFormData.id = this.song.id;
-  //     this.dataservice.updateSong(songFormData).subscribe({
-  //       next: (response) => {
-  //         this.router.navigate(['/']).then(() => {
-  //           this.snackbar.open(`Song ${this.songForm.value.title} updated`, 'Close', {
-  //             duration: 3000,
-  //             panelClass: ['snackbarWhite']
-  //           });
-  //         });
-  //       },
-  //       error: error => {
-  //         console.error('Error updating song:', error);
-  //       }
-  //     });
-  //   }
+    if (this.songForm.valid) {
+      this.song = { ...this.songForm.value };
+      this.firestoreservice.updateSong(this.song, this.songIdThroughParam).subscribe({
+        next: () => { // updateSong being an Observable completes after this next(), while the Subject doesn't do so automatically
+          this.router.navigate(['/']).then(() => {
+            this.snackbar.open(`Song ${this.songForm.value.title} updated`, 'Close', {
+              duration: 3000,
+              panelClass: ['snackbarWhite']
+            });
+          });
+        },
+        error: error => {
+          console.error('Error updating song:', error);
+        }
+      });
+    }
     }
 }
