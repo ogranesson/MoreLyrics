@@ -22,20 +22,10 @@ export class ViewSongBookComponent implements OnInit, OnDestroy{
   constructor(private firestoreservice: FirestoreService, private router: Router, private readonly snackbar: MatSnackBar) {}
 
   ngOnInit() {
-    // this.route.params.subscribe(params => {
-    //   if (params['songbookId']) {
-    //     this.songbookIdThroughParam = params['songbookId'];
-    //   } else {
-    //     this.songbookIdThroughParam = null;
-    //   }
-    // });
-    // this.dataservice.getSongbooks().subscribe(songbooks => {
-    //   this.songbooks = songbooks;
-    // });
-
     this.songbookSubscription = this.firestoreservice.getSongbooks().subscribe({
       next: (songbooks) => {
         this.songbooks = songbooks;
+        this.songbooks.sort((a, b) => a.name.localeCompare(b.name));
       },
       error: (err) => {
         console.error('An error occurred while fetching songbooks:', err);
