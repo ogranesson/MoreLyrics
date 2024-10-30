@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SongUpdatedComponent } from '../../snackbars/song-updated/song-updated.component';
+import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
 import { DataService } from '../../data.service';
 import { FirestoreService } from '../../firestore.service';
 import { Song } from '../../models/song.model';
@@ -69,8 +69,8 @@ export class EditLyricsComponent {
       this.firestoreservice.updateSong(this.song, this.songIdThroughParam).subscribe({
         next: () => { // updateSong being an Observable completes after this next(), while the Subject doesn't do so automatically
           this.router.navigate(['/']).then(() => {
-            this.snackbar.openFromComponent(SongUpdatedComponent, {
-              data: { title: this.songForm.value.title },
+            this.snackbar.openFromComponent(SnackbarComponent, {
+              data: { type: 'Song', title: this.songForm.value.title, action: 'updated' },
               duration: 3000,
               panelClass: ['snackbarWhite']
             });
