@@ -17,6 +17,7 @@ import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
 export class ViewSongBookComponent implements OnInit, OnDestroy{
   songbooks: Songbook[] = [];
   songbookSubscription!: Subscription;
+  selectedSongbookSubscription!: Subscription;
   currentlySelectedSongbook: Songbook | null = null;
 
   constructor(private firestoreservice: FirestoreService, private router: Router, private readonly snackbar: MatSnackBar) {}
@@ -30,6 +31,10 @@ export class ViewSongBookComponent implements OnInit, OnDestroy{
       error: (err) => {
         console.error('An error occurred while fetching songbooks:', err);
       }
+    });
+
+    this.selectedSongbookSubscription = this.firestoreservice.selectedSongbook.subscribe(songbook => {
+      this.currentlySelectedSongbook = songbook;
     });
   }
 
@@ -72,6 +77,10 @@ export class ViewSongBookComponent implements OnInit, OnDestroy{
   ngOnDestroy() {
     if(this.songbookSubscription) {
       this.songbookSubscription.unsubscribe()
+    }
+
+    if(this.selectedSongbookSubscription) {
+      this.selectedSongbookSubscription.unsubscribe()
     }
   }
 }
