@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { TitleshortenerPipe } from '../../pipes/titleshortener.pipe';
 import { Subscription } from 'rxjs';
+import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-all-songbooks',
@@ -40,23 +41,20 @@ export class AllSongbooksComponent implements OnDestroy {
 
   deleteSongbook(id: string, name: string, event: MouseEvent) {
     event.stopPropagation();
-
-    
-    // this.dataservice.deleteSongbook(id).subscribe({
-    //   next: () => {
-    //     this.dataservice.getSongbooks().subscribe(songbooks => {
-    //     this.songbooks = songbooks;
-
-    //     this.router.navigate(['/']).then(() => {
-    //       this.snackbar.open(`The songbook ${name} has been deleted.`, 'Close', {
-    //         duration: 3000,
-    //         verticalPosition: 'top',
-    //         horizontalPosition: 'center'
-    //       });
-    //     });
-    //     })
-    //   }
-    // })
+    if (confirm("Are you sure you want to delete " + name + "?")) {
+      this.firestoreservice.deleteSongbook(id).subscribe({
+        next: () => {
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: { type: 'Songbook', title: name, action: 'deleted' },
+            duration: 3000,
+            panelClass: ['snackbarWhite']
+          });
+        },
+        error: error => {
+          console.error('Error deleting songbook:', error);
+        }
+      });
+    }
   }
 
   ngOnDestroy() {
