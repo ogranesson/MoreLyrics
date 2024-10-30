@@ -27,6 +27,11 @@ export class ViewSongComponent {
       next:(songbook: Songbook) => {
         this.currentlySelectedSongbook = songbook;
         this.songIds = songbook.songIds;
+        
+        if (this.songIds.length == 0) {
+          console.log('empty');
+          this.songs = [];
+        } else {
 
         this.songSubscription = this.firestoreservice.getSongs(this.songIds).subscribe({
           next: (songs) => {
@@ -37,12 +42,17 @@ export class ViewSongComponent {
           }
         });
       }
+      }
     });
   }
 
   ngOnDestroy() {
     if (this.songSubscription) {
       this.songSubscription.unsubscribe();
+    }
+
+    if (this.firestoreservice.selectedSongbook) {
+      this.firestoreservice.selectedSongbook.unsubscribe();
     }
   }
 

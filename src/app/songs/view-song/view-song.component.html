@@ -1,4 +1,4 @@
-<ng-container *ngIf="songs.length > 0">
+
 <div *ngIf="currentlySelectedSongbook" class="flex flex-col mb-2">
     <div class="w-full">
         <img src={{currentlySelectedSongbook.img}} alt="songbook">
@@ -17,8 +17,11 @@ class="rounded p-2 mb-2 transition hover:bg-blue-900 hover:text-white hover:curs
     <p class="font-bold">{{ song.title | titleshortener }}</p>
     <p>by {{ song.author }}</p>
 </div>
-</ng-container>
 
-<div *ngIf="songs.length == 0" class="text-center text-gray-400">
+<div *ngIf="songs.length == 0 && currentlySelectedSongbook" class="text-center text-gray-400">
+    <p>Add songs to view them here!</p>
+</div>
+
+<div *ngIf="songs.length == 0 && !currentlySelectedSongbook" class="text-center text-gray-400">
     <p>Select a songbook to begin</p>
 </div>
