@@ -27,7 +27,8 @@ export class EditLyricsComponent {
 
   lyrics: string = "";
 
-  constructor(private readonly fb: FormBuilder, private lyricsformatpipe: LyricsFormatPipe, private readonly firestoreservice: FirestoreService, private readonly route: ActivatedRoute, private readonly router: Router, private readonly snackbar: MatSnackBar)
+  constructor(private readonly fb: FormBuilder, private lyricsformatpipe: LyricsFormatPipe, private readonly firestoreservice: FirestoreService,
+              private readonly route: ActivatedRoute, private readonly router: Router, private readonly snackbar: MatSnackBar)
   {
     this.songForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -65,7 +66,7 @@ export class EditLyricsComponent {
 
   onSubmit() {
     if (this.songForm.valid) {
-      this.song = { ...this.songForm.value };
+      this.song = { ...this.songForm.value }; // object spread syntax
       this.firestoreservice.updateSong(this.song, this.songIdThroughParam).subscribe({
         next: () => { // updateSong being an Observable completes after this next(), while the Subject doesn't do so automatically
           this.router.navigate(['/']).then(() => {
