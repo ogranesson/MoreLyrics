@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, CollectionReference, docData, DocumentReference, doc, updateDoc, setDoc } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, CollectionReference, docData, DocumentReference, doc, updateDoc, setDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable, Subject, map, combineLatest, filter, from } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
@@ -67,9 +67,14 @@ export class FirestoreService {
     return from(updateDoc(songReference, { ...song }));
   }
 
-  createSongbook(newSongbook: Songbook) {
+  createSongbook(newSongbook: Songbook): Observable<void> {
     const newID = doc(collection(this.db, 'id')).id;
     const ref = doc(this.db, 'songbooks/'+newID);
     return from(setDoc(ref, newSongbook));
+  }
+
+  deleteBook(id: string): Observable<void> {
+    const bookRef = doc(this.db, 'songbooks/'+id) as DocumentReference<Songbook>;
+    return from(deleteDoc(bookRef));
   }
 }

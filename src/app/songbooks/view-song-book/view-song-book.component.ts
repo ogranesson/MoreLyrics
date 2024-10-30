@@ -4,6 +4,8 @@ import { Songbook } from '../../models/songbook.model';
 import { FirestoreService } from '../../firestore.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-view-song-book',
@@ -17,7 +19,7 @@ export class ViewSongBookComponent implements OnInit{
   songbookSubscription!: Subscription;
   currentlySelectedSongbook: Songbook | null = null;
 
-  constructor(private firestoreservice: FirestoreService, private router: Router) {}
+  constructor(private firestoreservice: FirestoreService, private router: Router, private readonly snackbar: MatSnackBar) {}
 
   ngOnInit() {
     // this.route.params.subscribe(params => {
@@ -46,24 +48,30 @@ export class ViewSongBookComponent implements OnInit{
   }
 
   newSongbook() {
-    const newSongbook: Songbook = {
-      id: "",
-      name: "New songbook",
-      description: "",
-      img: "assets/default.png",
-      songIds: []
-    };
-    
-    this.firestoreservice.createSongbook(newSongbook);
+    let newName = prompt("What should the new songbook be called?", "New songbook");
 
-    // this.dataservice.addSongbook(songbookFormData).subscribe({
-    //   next: (response) => {
-    //     location.reload();
-    //   },
-    //   error: error => {
-    //     console.error('Error adding songbook:', error);
-    //   }
-    // });
+    if (newName) {
+      const newSongbook: Songbook = {
+        id: "",
+        name: newName,
+        description: "",
+        img: "assets/default.png",
+        songIds: []
+      };
+
+      this.firestoreservice.createSongbook(newSongbook).subscribe({
+        next: () => {
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: { type: 'Songbook', title: newName, action: 'created' },
+            duration: 3000,
+            panelClass: ['snackbarWhite']
+          });
+        }
+      });
+    }
+    else {
+      return;
+    }
   }
 
   selectSongbook(songbook: Songbook) {
