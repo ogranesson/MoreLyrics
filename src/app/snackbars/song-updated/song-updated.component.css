@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+button {
+    color: #fff;
+    background-color: #f00;
+    padding: 4px;
+    border-radius: 10px;
+    width:30px;
+}
