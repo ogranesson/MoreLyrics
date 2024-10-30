@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { FirestoreService } from '../../firestore.service';
 import { Songbook } from '../../models/songbook.model';
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './all-songbooks.component.html',
   styleUrl: './all-songbooks.component.css',
 })
-export class AllSongbooksComponent {
+export class AllSongbooksComponent implements OnDestroy {
   constructor(private firestoreservice: FirestoreService, private router: Router, private snackbar: MatSnackBar){}
   songbooks: Songbook[] = [];
   selectedSongbookId: string = '';
@@ -39,6 +39,8 @@ export class AllSongbooksComponent {
 
   deleteSongbook(id: string, name: string, event: MouseEvent) {
     event.stopPropagation();
+
+    
     // this.dataservice.deleteSongbook(id).subscribe({
     //   next: () => {
     //     this.dataservice.getSongbooks().subscribe(songbooks => {
@@ -54,5 +56,11 @@ export class AllSongbooksComponent {
     //     })
     //   }
     // })
+  }
+
+  ngOnDestroy() {
+    if (this.songbookSubscription) {
+      this.songbookSubscription.unsubscribe();
+    }
   }
 }

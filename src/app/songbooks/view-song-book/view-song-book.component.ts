@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Songbook } from '../../models/songbook.model';
 import { FirestoreService } from '../../firestore.service';
@@ -14,7 +14,7 @@ import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
   templateUrl: './view-song-book.component.html',
   styleUrl: './view-song-book.component.css',
 })
-export class ViewSongBookComponent implements OnInit{
+export class ViewSongBookComponent implements OnInit, OnDestroy{
   songbooks: Songbook[] = [];
   songbookSubscription!: Subscription;
   currentlySelectedSongbook: Songbook | null = null;
@@ -77,5 +77,11 @@ export class ViewSongBookComponent implements OnInit{
   selectSongbook(songbook: Songbook) {
     this.firestoreservice.selectSongbook(songbook.id); // instead of having to use input and output
     this.currentlySelectedSongbook = songbook;
+  }
+
+  ngOnDestroy() {
+    if(this.songbookSubscription) {
+      this.songbookSubscription.unsubscribe()
+    }
   }
 }
