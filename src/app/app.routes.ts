@@ -20,8 +20,8 @@ export const routes: Routes = [
     { path: 'songbooks', component: AllSongbooksComponent, canActivate: [loggedInGuard], children: [
         { path: 'edit/:songbookId', component: EditSongbookComponent, canDeactivate: [deactivateGuard] }
     ]},
-    { path: 'edit-lyrics/:songId', component: EditLyricsComponent, canDeactivate: [deactivateGuard] },
-    { path: 'new-song', component: NewSongComponent, canDeactivate: [deactivateGuard] },
+    { path: 'edit-lyrics/:songId', component: EditLyricsComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
+    { path: 'new-song', component: NewSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
     
     { path: '**', component: PageNotFoundComponent },
 ];

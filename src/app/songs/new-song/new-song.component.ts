@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
 import { DataService } from '../../data.service';
+import { FirestoreService } from '../../firestore.service';
 import { Songbook } from '../../models/songbook.model';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { youtubeLinkValidator } from '../../validators/youtube-link-validator';
 import { TabspaceDirective } from '../../directives/tabspace.directive';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { LyricsFormatPipe } from '../../pipes/lyrics-format.pipe';
+import { Observable } from 'rxjs';
+import { Song } from '../../models/song.model';
 
 @Component({
   selector: 'app-new-song',
@@ -18,76 +23,50 @@ import { Router } from '@angular/router';
 })
 export class NewSongComponent {
   songForm!: FormGroup;
+  song!: Song;
   title: string = "Add a new song"
   songbooks: Songbook[] = [];
   selectedSongbookId: string =  "";
+  saved: boolean = false;
 
-  constructor(private readonly fb: FormBuilder, private readonly dataservice: DataService, private readonly router: Router, private readonly snackbar: MatSnackBar) { }
-
-  ngOnInit() {
+  constructor(private readonly fb: FormBuilder, private readonly dataservice: DataService, private firestoreservice: FirestoreService,
+              private readonly router: Router, private readonly snackbar: MatSnackBar) 
+  {
     this.songForm = this.fb.group({
       title: ['', [Validators.required]],
-      author: ['', [Validators.required]],
-      selectedSongbookId: [''],
+      author: ['', [Validators.required]], 
       tuning: ['', [Validators.required]],
       capo: ['', [Validators.required]],
       link: ['', [youtubeLinkValidator()]],
       lyrics: ['', [Validators.required]]
     });
-
-    this.dataservice.getSongbooks().subscribe(songbooks => {
-      this.songbooks = songbooks;
-    });
   }
 
   onSubmit() {
     if (this.songForm.valid) {
-      const newId = this.generateRandomId().toString();
-      const songName = this.songForm.value.title;
-      this.selectedSongbookId = this.songForm.value.selectedSongbookId;
+      this.saved = true;
 
-      const songFormData = {
-        id: newId,
-        title: this.songForm.value.title,
-        author: this.songForm.value.author,
-        tuning: this.songForm.value.tuning,
-        capo: this.songForm.value.capo,
-        link: this.songForm.value.link,
-        lyrics: this.songForm.value.lyrics
-      };
-      this.dataservice.addSong(songFormData).subscribe({
-        next: (response) => {
-          this.updateSongbook(newId);
-          this.router.navigate(['/']).then(() => {
-            this.snackbar.open(`New song ${songName} added`, 'Close', {
-              duration: 3000,
-              panelClass: ['snackbarWhite']
-            });
+      this.song = { ...this.songForm.value };
+
+      this.firestoreservice.createSong(this.song).subscribe({
+        next: () => {
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: { type: 'Song', title: this.songForm.value.name, action: 'created' },
+            duration: 3000,
+            panelClass: ['snackbarWhite']
           });
         },
-        error: error => {
-          console.error('Error adding song:', error);
+        error: (error) => {
+          console.error('Error creating song:', error);
         }
       });
     }
   }
 
-  updateSongbook(newSongId: string) {
-    const songbook = this.songbooks.find(sb => sb.id === this.selectedSongbookId);
-    if (songbook) {
-      songbook.songIds.push(newSongId);
-      this.dataservice.updateSongbook(songbook).subscribe({
-        next: updatedSongbook => {
-          console.log('Songbook updated successfully', updatedSongbook);
-        },
-        error: error => {
-          console.error('Error updating songbook:', error);
-        }
-      });
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { // same type as interface defined in guard
+    if (!this.saved) {
+      return confirm('Do you want to discard the changes made?');
     }
-  }
-
-  generateRandomId() {
-    return Math.floor(Math.random() * 100000);
+    return true;
   }
 }

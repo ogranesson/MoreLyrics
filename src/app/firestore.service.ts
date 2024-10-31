@@ -73,6 +73,12 @@ export class FirestoreService {
     return from(setDoc(ref, newSongbook));
   }
 
+  createSong(newSong: Song): Observable<void> {
+    const newID = doc(collection(this.db, 'id')).id;
+    const ref = doc(this.db, 'songs/'+newID);
+    return from(setDoc(ref, newSong));
+  }
+
   deleteSongbook(id: string): Observable<void> {
     const bookRef = doc(this.db, 'songbooks/'+id) as DocumentReference<Songbook>;
     return from(deleteDoc(bookRef));
