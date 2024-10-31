@@ -1,11 +1,23 @@
 import { TestBed } from '@angular/core/testing';
 import { CanDeactivateFn } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { deactivateGuard } from './deactivate.guard';
+import { CanComponentDeactivate, deactivateGuard } from './deactivate.guard';
 
 describe('deactivateGuard', () => {
-  const executeGuard: CanDeactivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => deactivateGuard(...guardParameters));
+  // Define mocks for ActivatedRouteSnapshot and RouterStateSnapshot
+  const mockActivatedRouteSnapshot = {} as ActivatedRouteSnapshot;
+  const mockRouterStateSnapshot = {} as RouterStateSnapshot;
+
+  // Provide all required parameters to deactivateGuard
+  const executeGuard: CanDeactivateFn<CanComponentDeactivate> = (
+    component: CanComponentDeactivate,
+    currentRoute = mockActivatedRouteSnapshot,
+    currentState = mockRouterStateSnapshot,
+    nextState = mockRouterStateSnapshot
+  ) => TestBed.runInInjectionContext(() =>
+    deactivateGuard(component, currentRoute, currentState, nextState)
+  );
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

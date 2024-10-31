@@ -4,6 +4,7 @@ import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
 import { DataService } from '../../data.service';
 import { FirestoreService } from '../../firestore.service';
 import { Song } from '../../models/song.model';
+import { CanComponentDeactivate } from '../../guards/deactivate.guard';
 import { FormsModule, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { youtubeLinkValidator } from '../../validators/youtube-link-validator';
 import { LyricsFormatPipe } from '../../pipes/lyrics-format.pipe';
@@ -20,7 +21,7 @@ import { Observable } from 'rxjs';
   styleUrl: './edit-lyrics.component.css',
   providers: [DataService, LyricsFormatPipe]
 })
-export class EditLyricsComponent {
+export class EditLyricsComponent implements CanComponentDeactivate {
   songForm!: FormGroup;
   title: string = "Edit song"
   song!: Song;
@@ -87,7 +88,7 @@ export class EditLyricsComponent {
     }
   }
 
-  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { // same type as interface defined in guard
     if (!this.saved) {
       return confirm('Do you want to discard the changes made?');
     }
