@@ -44,10 +44,13 @@ export class AuthService {
   }
 
   logout() {
-    this.auth.signOut();
-    this.token = null;
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then((navigated: boolean) => {
+      if (navigated) {
+        this.auth.signOut();
+        this.token = null;
+        localStorage.removeItem('token');
+      }
+    });
   }
 
   isLoggedIn(): boolean {
