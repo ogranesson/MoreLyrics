@@ -10,6 +10,7 @@ import { LyricsFormatPipe } from '../../pipes/lyrics-format.pipe';
 import { TabspaceDirective } from '../../directives/tabspace.directive';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-lyrics',
@@ -24,6 +25,7 @@ export class EditLyricsComponent {
   title: string = "Edit song"
   song!: Song;
   songIdThroughParam!: string;
+  saved: boolean = false;
 
   lyrics: string = "";
 
@@ -66,6 +68,7 @@ export class EditLyricsComponent {
 
   onSubmit() {
     if (this.songForm.valid) {
+      this.saved = true;
       this.song = { ...this.songForm.value }; // object spread syntax
       this.firestoreservice.updateSong(this.song, this.songIdThroughParam).subscribe({
         next: () => { // updateSong being an Observable completes after this next(), while the Subject doesn't do so automatically
@@ -82,5 +85,12 @@ export class EditLyricsComponent {
         }
       });
     }
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (!this.saved) {
+      return confirm('Do you want to discard the changes made?');
     }
+    return true;
+  }
 }

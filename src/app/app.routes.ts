@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { loggedInGuard } from './guards/logged-in.guard';
+import { deactivateGuard } from './guards/deactivate.guard';
 import { HomeComponent } from './home/home.component';
 import { NewSongComponent } from './songs/new-song/new-song.component';
 import { EditSongbookComponent } from './songbooks/edit-songbook/edit-songbook.component';
@@ -17,9 +18,9 @@ export const routes: Routes = [
           { path: '', component: HomeComponent },
           { path: 'home', component: HomeComponent },
           { path: 'home/:songbookId', component: HomeComponent },
-          { path: 'edit-songbook/:songbookId', component: EditSongbookComponent },
-          { path: 'edit-lyrics/:songId', component: EditLyricsComponent },
-          { path: 'new-song', component: NewSongComponent },
+          { path: 'edit-songbook/:songbookId', component: EditSongbookComponent, canDeactivate: [deactivateGuard] },
+          { path: 'edit-lyrics/:songId', component: EditLyricsComponent, canDeactivate: [deactivateGuard] },
+          { path: 'new-song', component: NewSongComponent, canDeactivate: [deactivateGuard] },
           { path: 'all-songbooks', component: AllSongbooksComponent },
         ]
     },
