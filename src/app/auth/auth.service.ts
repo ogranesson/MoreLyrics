@@ -7,9 +7,15 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from
 })
 
 export class AuthService {
-  constructor(private router: Router, private auth: Auth) { }
+  token: string | null = null;
 
-  token!: string;
+  constructor(private router: Router, private auth: Auth) {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if(localStorage.getItem('token')) {
+        this.token = localStorage.getItem('token');
+      }
+    }
+  }
 
   signup(email: string, passwd: string): Promise<string> {
     return createUserWithEmailAndPassword(this.auth, email, passwd)
@@ -35,5 +41,9 @@ export class AuthService {
         console.log(error);
         return false;
       });
+  }
+
+  isLoggedIn(): boolean {
+    return this.token != null;
   }
 }

@@ -13,8 +13,11 @@
       <li>
         <a href="#" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Contact</a>
       </li>
-      <li>
+      <li *ngIf="!isLoggedIn">
         <a href="/login" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Login</a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a href="/login" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Logout</a>
       </li>
     </ul>
 </nav>
