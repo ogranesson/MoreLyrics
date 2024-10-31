@@ -3,6 +3,7 @@ import { Firestore, collectionData, collection, CollectionReference, docData, Do
 import { Observable, Subject, map, combineLatest, filter, from } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
+import { Admin } from './models/admin.model';
 
 @Injectable({
   providedIn: 'root'
@@ -82,5 +83,11 @@ export class FirestoreService {
   deleteSongbook(id: string): Observable<void> {
     const bookRef = doc(this.db, 'songbooks/'+id) as DocumentReference<Songbook>;
     return from(deleteDoc(bookRef));
+  }
+
+  getAdmins(uid: string | null) {
+    return docData<Admin>(
+      doc(this.db, '/administrators/' + uid) as DocumentReference<Admin>,
+    );
   }
 }
