@@ -43,6 +43,13 @@ export class AuthService {
       });
   }
 
+  logout() {
+    this.auth.signOut();
+    this.token = null;
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
   isLoggedIn(): boolean {
     return this.token != null;
   }

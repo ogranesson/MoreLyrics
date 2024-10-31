@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 
@@ -9,14 +9,18 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
   public isMobileMenuOpen = false;
   isLoggedIn: boolean = false;
 
-  constructor (private authservice: AuthService) { }
+  constructor (private _authservice: AuthService) { } // underscore for private variables
 
-  ngOnInit(): void {
-    this.isLoggedIn = this.authservice.isLoggedIn();
+  onLogOut() {
+    this._authservice.logout();
+  }
+
+  get authservice() {
+    return this._authservice;
   }
 
   toggleMobileMenu() {
