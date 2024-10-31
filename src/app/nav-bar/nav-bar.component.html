@@ -3,13 +3,13 @@
     <ul class="m-0 p-0 after:content-[''] flex flex-row items-center after:block after:clear-both text-white">
       <ng-template [ngIf]="authservice.isLoggedIn()">
         <li>
-          <a href="/home" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Home</a>
+          <a [routerLink]="['/home']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Home</a>
         </li>
         <li>
-          <a href="/new-song" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Add new song</a>
+          <a [routerLink]="['/new-song']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Add new song</a>
         </li>
         <li>
-          <a href="/songbooks" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">All songbooks</a>
+          <a [routerLink]="['/songbooks']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">All songbooks</a>
         </li>
         <li>
           <a href="#" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Contact</a>
@@ -20,10 +20,10 @@
       </ng-template>
       <ng-template [ngIf]="!authservice.isLoggedIn()">
         <li>
-          <a href="/register" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Register</a>
+          <a [routerLink]="['/register']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Register</a>
         </li>
         <li>
-          <a href="/login" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Login</a>
+          <a [routerLink]="['/login']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Login</a>
         </li>
       </ng-template>
     </ul>
