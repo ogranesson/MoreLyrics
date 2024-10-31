@@ -73,7 +73,7 @@ export class EditLyricsComponent implements CanComponentDeactivate {
       this.song = { ...this.songForm.value }; // object spread syntax
       this.firestoreservice.updateSong(this.song, this.songIdThroughParam).subscribe({
         next: () => { // updateSong being an Observable completes after this next(), while the Subject doesn't do so automatically
-          this.router.navigate(['/']).then(() => {
+          this.router.navigate(['/home']).then(() => {
             this.snackbar.openFromComponent(SnackbarComponent, {
               data: { type: 'Song', title: this.songForm.value.title, action: 'updated' },
               duration: 3000,
