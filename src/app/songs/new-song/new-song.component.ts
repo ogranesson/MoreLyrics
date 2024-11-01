@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
 import { DataService } from '../../data.service';
@@ -21,7 +21,7 @@ import { Song } from '../../models/song.model';
   styleUrl: './new-song.component.css',
   providers: [DataService]
 })
-export class NewSongComponent {
+export class NewSongComponent implements OnInit {
   songForm!: FormGroup;
   song!: Song;
   title: string = "Add a new song"
@@ -38,27 +38,50 @@ export class NewSongComponent {
       tuning: ['', [Validators.required]],
       capo: ['', [Validators.required]],
       link: ['', [youtubeLinkValidator()]],
-      lyrics: ['', [Validators.required]]
+      lyrics: ['', [Validators.required]],
+      selectedSongbookId: ['', [Validators.required]]
+    });
+  }
+
+  ngOnInit(): void {
+    this.firestoreservice.getSongbooks().subscribe({
+      next: (songbooks) => {
+        this.songbooks = songbooks;
+      },
+      error: (error) => {
+        console.error('Error fetching songbooks:', error);
+      },
     });
   }
 
   onSubmit() {
     if (this.songForm.valid) {
       this.saved = true;
-
       this.song = { ...this.songForm.value };
 
+      // Create the song in Firestore
       this.firestoreservice.createSong(this.song).subscribe({
-        next: () => {
-          this.snackbar.openFromComponent(SnackbarComponent, {
-            data: { type: 'Song', title: this.songForm.value.name, action: 'created' },
-            duration: 3000,
-            panelClass: ['snackbarWhite']
+        next: (songId) => {
+          const selectedSongbookId = this.songForm.value.selectedSongbookId;
+
+          // Add the songId to the selected songbook
+          this.firestoreservice.addSongIdToSongbook(selectedSongbookId, songId).subscribe({
+            next: () => {
+              this.snackbar.openFromComponent(SnackbarComponent, {
+                data: { type: 'Song', title: this.songForm.value.title, action: 'created' },
+                duration: 3000,
+                panelClass: ['snackbarWhite'],
+              });
+              this.router.navigate(['/home']);
+            },
+            error: (error) => {
+              console.error('Error adding songId to songbook:', error);
+            },
           });
         },
         error: (error) => {
           console.error('Error creating song:', error);
-        }
+        },
       });
     }
   }
