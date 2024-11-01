@@ -7,7 +7,7 @@ import { adminGuard } from './guards/admin.guard';
 import { HomeComponent } from './home/home.component';
 import { NewSongComponent } from './songs/new-song/new-song.component';
 import { EditSongbookComponent } from './songbooks/edit-songbook/edit-songbook.component';
-import { EditLyricsComponent } from './lyrics/edit-lyrics/edit-lyrics.component';
+import { EditSongComponent } from './songs/edit-song/edit-song.component';
 import { AllSongbooksComponent } from './songbooks/all-songbooks/all-songbooks.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
@@ -22,7 +22,7 @@ export const routes: Routes = [
     { path: 'songbooks', component: AllSongbooksComponent, canActivate: [loggedInGuard], children: [
         { path: 'edit/:songbookId', component: EditSongbookComponent, canDeactivate: [deactivateGuard] }
     ]},
-    { path: 'edit-lyrics/:songId', component: EditLyricsComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
+    { path: 'edit-lyrics/:songId', component: EditSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
     { path: 'new-song', component: NewSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
     { path: 'admin', component: AdminPanelComponent, canActivate: [adminGuard], canDeactivate: [deactivateGuard] },
     

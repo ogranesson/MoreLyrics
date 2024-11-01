@@ -14,14 +14,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-edit-lyrics',
+  selector: 'app-edit-song',
   standalone: true,
   imports: [ FormsModule, ReactiveFormsModule, CommonModule, TabspaceDirective],
-  templateUrl: './edit-lyrics.component.html',
-  styleUrl: './edit-lyrics.component.css',
+  templateUrl: './edit-song.component.html',
+  styleUrl: './edit-song.component.css',
   providers: [DataService, LyricsFormatPipe]
 })
-export class EditLyricsComponent implements CanComponentDeactivate {
+export class EditSongComponent implements CanComponentDeactivate {
   songForm!: FormGroup;
   title: string = "Edit song"
   song!: Song;
