@@ -15,12 +15,53 @@ export class FirestoreService {
   selectedSongbook = new Subject<Songbook>();
   selectedSong = new Subject<Song>();
 
+  // ----------------- Songbooks ------------------- 
+
   getSongbooks(): Observable<Songbook[]> {
     return collectionData<Songbook>(
       collection(this.db, 'songbooks') as CollectionReference<Songbook>,
       {idField: "id"}
     );
   }
+
+  getSongbook(songbookId: string): Observable<Songbook> {
+    return docData<Songbook>( // docData can return undefined, so have to cover for that
+      doc(this.db, '/songbooks/' + songbookId) as DocumentReference<Songbook>,
+      {idField: "id"}).pipe(
+        filter((songbook): songbook is Songbook => !!songbook) // Only emit if song is not undefined
+    );
+  }
+
+  selectSongbook(songbookId: string) {
+    const songbookReference = doc(this.db, '/songbooks/' + songbookId) as DocumentReference<Songbook>;
+
+    docData<Songbook>(songbookReference, {idField: "id"}).subscribe((songbook: Songbook | undefined) => { // subscribing for real-time updates in both components
+      if (songbook) {
+        // Only emit if the songbook is not undefined
+        this.selectedSongbook.next(songbook);
+      } else {
+        console.error('Songbook not found');
+      }
+    });
+  }
+
+  createSongbook(newSongbook: Songbook): Observable<void> {
+    const newID = doc(collection(this.db, 'id')).id;
+    const ref = doc(this.db, 'songbooks/'+newID);
+    return from(setDoc(ref, newSongbook));
+  }
+
+  deleteSongbook(id: string): Observable<void> {
+    const bookRef = doc(this.db, 'songbooks/'+id) as DocumentReference<Songbook>;
+    return from(deleteDoc(bookRef));
+  }
+
+  updateSongbook(songbook: Songbook, songbookId: string): Observable<void> {
+    const songReference = doc(this.db, `songbooks/${songbookId}`) as DocumentReference<Song>;
+    return from(updateDoc(songReference, { ...songbook }));
+  }
+
+  // ----------------- Songs ------------------- 
 
   // forkJoin returns an Observable emitting an array of Songs when all the Song observables are complete
   // but combineLatest doesn't need the Song observables to complete, so no need to take(1)
@@ -38,19 +79,6 @@ export class FirestoreService {
     );
   }
   
-  selectSongbook(songbookId: string) {
-    const songbookReference = doc(this.db, '/songbooks/' + songbookId) as DocumentReference<Songbook>;
-
-    docData<Songbook>(songbookReference, {idField: "id"}).subscribe((songbook: Songbook | undefined) => { // subscribing for real-time updates in both components
-      if (songbook) {
-        // Only emit if the songbook is not undefined
-        this.selectedSongbook.next(songbook);
-      } else {
-        console.error('Songbook not found');
-      }
-    });
-  }
-
   selectSong(songId: string) {
     const songReference = doc(this.db, '/songs/' + songId) as DocumentReference<Song>;
     
@@ -68,22 +96,13 @@ export class FirestoreService {
     return from(updateDoc(songReference, { ...song }));
   }
 
-  createSongbook(newSongbook: Songbook): Observable<void> {
-    const newID = doc(collection(this.db, 'id')).id;
-    const ref = doc(this.db, 'songbooks/'+newID);
-    return from(setDoc(ref, newSongbook));
-  }
-
   createSong(newSong: Song): Observable<void> {
     const newID = doc(collection(this.db, 'id')).id;
     const ref = doc(this.db, 'songs/'+newID);
     return from(setDoc(ref, newSong));
   }
 
-  deleteSongbook(id: string): Observable<void> {
-    const bookRef = doc(this.db, 'songbooks/'+id) as DocumentReference<Songbook>;
-    return from(deleteDoc(bookRef));
-  }
+  // ----------------- Others ------------------- 
 
   getAdmins(uid: string | null) {
     return docData<Admin>(

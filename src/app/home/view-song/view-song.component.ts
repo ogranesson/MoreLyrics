@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FirestoreService } from '../../firestore.service';
 import { TitleshortenerPipe } from '../../pipes/titleshortener.pipe';
 import { Subscription } from 'rxjs';
@@ -9,7 +10,7 @@ import { Songbook } from '../../models/songbook.model';
 @Component({
   selector: 'app-view-song',
   standalone: true,
-  imports: [CommonModule, TitleshortenerPipe],
+  imports: [CommonModule, RouterModule, TitleshortenerPipe],
   templateUrl: './view-song.component.html',
   styleUrl: './view-song.component.css'
 })

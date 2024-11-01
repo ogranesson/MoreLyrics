@@ -9,6 +9,7 @@ import { NewSongComponent } from './songs/new-song/new-song.component';
 import { EditSongbookComponent } from './songbooks/edit-songbook/edit-songbook.component';
 import { EditSongComponent } from './songs/edit-song/edit-song.component';
 import { AllSongbooksComponent } from './songbooks/all-songbooks/all-songbooks.component';
+import { SongbooksComponent } from './songbooks/songbooks.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -19,7 +20,8 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
 
     { path: 'home', component: HomeComponent, canActivate: [loggedInGuard] },
-    { path: 'songbooks', component: AllSongbooksComponent, canActivate: [loggedInGuard], children: [
+    { path: 'songbooks', component: SongbooksComponent, canActivate: [loggedInGuard], children: [
+        { path: 'all', component: AllSongbooksComponent },
         { path: 'edit/:songbookId', component: EditSongbookComponent, canDeactivate: [deactivateGuard] }
     ]},
     { path: 'edit-lyrics/:songId', component: EditSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },

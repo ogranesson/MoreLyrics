@@ -7,7 +7,7 @@
         <div class="text-3xl font-bold">{{currentlySelectedSongbook.name}}</div>
         <div>{{currentlySelectedSongbook.description}}</div>
     </div>
-    <a class="w-full bg-blue-900 hover:bg-blue-950 text-white font-semibold text-center p-2 rounded-lg" href="/edit-songbook/{{currentlySelectedSongbook.id}}">
+    <a class="w-full bg-blue-900 hover:bg-blue-950 text-white font-semibold text-center p-2 rounded-lg" [routerLink]="['/songbooks/edit/', currentlySelectedSongbook.id]">
         Edit songbook
     </a>
 </div>
