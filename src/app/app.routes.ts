@@ -14,8 +14,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 export const routes: Routes = [
+    { path: '', component: WelcomeComponent },
+
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
 

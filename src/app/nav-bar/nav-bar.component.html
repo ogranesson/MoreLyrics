@@ -1,5 +1,6 @@
 <nav class="bg-blue-900 px-16 top-0 sticky flex w-full justify-between items-center fixed drop-shadow-lg z-10">
-  <a class="block h-12" href="/home"><img src="assets/logo-white.png" alt="Logo" class="h-full"></a>
+  <a *ngIf="authservice.isLoggedIn()" class="block h-12" href="/home"><img src="assets/logo-white.png" alt="Logo" class="h-full"></a>
+  <a *ngIf="!authservice.isLoggedIn()" class="block h-12" href="/"><img src="assets/logo-white.png" alt="Logo" class="h-full"></a>
     <ul class="m-0 p-0 after:content-[''] flex flex-row items-center after:block after:clear-both text-white">
       <ng-template [ngIf]="authservice.isLoggedIn()">
         <li>
