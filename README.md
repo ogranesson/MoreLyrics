@@ -48,24 +48,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - [x] Implement at least 2 negative unit tests
 
 ### 5. Deployment
-- [ ] Deploy the application via Firebase using the AOT principle
+- [x] Deploy the application via Firebase using the AOT principle
 
 ### 6. Firebase Setup
 - [x] Configure Firebase Firestore database for data storage
-- [ ] Implement database access rules
-  - [ ] Ensure different access levels for admin and normal users
+- [x] Implement database access rules
+  - [x] Ensure different access levels for admin and normal users
 - [x] Set up Firebase authentication using email and password
-- [ ] Utilize Firebase Storage for storing documents and figures
-- [ ] Host the application using Firebase Hosting
+- [x] Utilize Firebase Storage for storing documents and figures
+- [x] Host the application using Firebase Hosting
 
 ### 7. Documentation
 - [x] Create a README file containing:
-  - [ ] Firebase URL
-  - [ ] Administrator credentials
-- [ ] Include the testing plan for the chosen component
-- [ ] Document the results of the self-written unit tests
-- [ ] Provide full code of the app (excluding node modules)
-- [ ] Ensure Firestore rules and Firebase rules are included in the codebase
+  - [x] Firebase URL
+  - [x] Administrator credentials
+- [x] Include the testing plan for the chosen component
+- [x] Document the results of the self-written unit tests
+- [x] Provide full code of the app (excluding node modules)
+- [x] Ensure Firestore rules and Firebase rules are included in the codebase
 
 ### 8. My own requirements:
 
