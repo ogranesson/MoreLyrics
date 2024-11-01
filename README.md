@@ -9,15 +9,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## To-Do List
 
 ### 1. Authentication
-- [ ] Implement authentication service
-- [ ] Enable user login functionality
-- [ ] Enable user logout functionality
-- [ ] Enable user registration functionality
+- [x] Implement authentication service
+- [x] Enable user login functionality
+- [x] Enable user logout functionality
+- [x] Enable user registration functionality
 - [ ] Create a reactive registration form
   - [ ] Implement at least 1 synchronous validator
   - [ ] Implement at least 1 asynchronous validator
   - [ ] Provide clear messages and/or visual hints for incorrect fields
-- [ ] Integrate Firebase SDK for authentication
+- [x] Integrate Firebase SDK for authentication
 
 ### 2. Lazy Loading
 - [ ] Create at least 1 lazy-loaded routing configuration representing a complete feature
@@ -29,16 +29,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Implement routing with at least 3 different routes
   - [x] Include at least 1 child route
   - [x] Handle incorrectly entered routes
-- [ ] Implement routing guards
-  - [ ] Create at least 2 different `canActivate` guards
-  - [ ] Create at least 1 `canDeactivate` guard
+- [x] Implement routing guards
+  - [x] Create at least 2 different `canActivate` guards
+  - [x] Create at least 1 `canDeactivate` guard
 - [x] Create at least 1 custom directive
-- [ ] Implement at least 1 pipe to filter or sort data
+- [x] Implement at least 1 pipe to filter or sort data
 - [x] Utilize at least 1 subject in the application
-- [ ] Define at least 3 access levels:
-  - [ ] Not logged in => restricted access (login/registration)
-  - [ ] Logged in => normal user access
-  - [ ] Admin => extended options
+- [x] Define at least 3 access levels:
+  - [x] Not logged in => restricted access (login/registration)
+  - [x] Logged in => normal user access
+  - [x] Admin => extended options
 
 ### 4. Testing
 - [ ] Develop a unit testing plan for at least 1 component
@@ -54,7 +54,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Configure Firebase Firestore database for data storage
 - [ ] Implement database access rules
   - [ ] Ensure different access levels for admin and normal users
-- [ ] Set up Firebase authentication using email and password
+- [x] Set up Firebase authentication using email and password
 - [ ] Utilize Firebase Storage for storing documents and figures
 - [ ] Host the application using Firebase Hosting
 
@@ -74,8 +74,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [ ] Fix layout for phones
 - [ ] Add profile picture upload for songbooks
 - [ ] Fix songbook/song database clash
-- [ ] Add dates under songbook name
-- [ ] Fix layout
+- [x] Fix layout
   - [x] Remove the second bar on the top
 - [x] Fix the regex (currently not highlighting the # in A/G#)
 

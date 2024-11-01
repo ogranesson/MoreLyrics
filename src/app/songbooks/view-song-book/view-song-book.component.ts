@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Songbook } from '../../models/songbook.model';
 import { FirestoreService } from '../../firestore.service';
@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../snackbars/snackbar/snackbar.component';
+import { FormsModule } from '@angular/forms';
+import { SongbookFilterPipe } from '../../pipes/songbook-filter.pipe';
 
 @Component({
   selector: 'app-view-song-book',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, SongbookFilterPipe],
   templateUrl: './view-song-book.component.html',
   styleUrl: './view-song-book.component.css',
 })
@@ -19,6 +21,7 @@ export class ViewSongBookComponent implements OnInit, OnDestroy{
   songbookSubscription!: Subscription;
   selectedSongbookSubscription!: Subscription;
   currentlySelectedSongbook: Songbook | null = null;
+  search: string = "";
 
   constructor(private firestoreservice: FirestoreService, private router: Router, private readonly snackbar: MatSnackBar) {}
 
