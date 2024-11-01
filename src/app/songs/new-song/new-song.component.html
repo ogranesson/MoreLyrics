@@ -25,13 +25,6 @@
                 <input appTabspace id="author" class="form-control border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2" formControlName="author" type="text" required autocomplete="off">
             </div>
 
-            <div>
-                <label class="block font-medium text-xl text-gray-700 mb-1">Songbook:</label>
-                <select formControlName="selectedSongbookId" class="border-2 border-gray-200 p-2 w-3/5 rounded shadow-sm mb-2">
-                    <option *ngFor="let songbook of songbooks" [value]="songbook.id">{{songbook.name}}</option>
-                </select>
-            </div>
-
             <div class="flex flex-col">
                 <div class="flex flex-row w-3/5 justify-between items-center">
                     <div>
