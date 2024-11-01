@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { loggedInGuard } from './guards/logged-in.guard';
+import { loggedInGuard, loggedInLoadGuard } from './guards/logged-in.guard';
 import { deactivateGuard } from './guards/deactivate.guard';
 import { adminGuard } from './guards/admin.guard';
 
@@ -20,10 +20,11 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
 
     { path: 'home', component: HomeComponent, canActivate: [loggedInGuard] },
-    { path: 'songbooks', component: SongbooksComponent, canActivate: [loggedInGuard], children: [
-        { path: 'all', component: AllSongbooksComponent },
-        { path: 'edit/:songbookId', component: EditSongbookComponent, canDeactivate: [deactivateGuard] }
-    ]},
+
+    { path: 'songbooks', canMatch: [loggedInLoadGuard], // lazy loading
+        loadChildren: () => import('./songbooks/songbooks.routes').then(m=>m.songbookRoutes)
+    },
+
     { path: 'edit-lyrics/:songId', component: EditSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
     { path: 'new-song', component: NewSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
     { path: 'admin', component: AdminPanelComponent, canActivate: [adminGuard], canDeactivate: [deactivateGuard] },

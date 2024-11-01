@@ -20,9 +20,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Integrate Firebase SDK for authentication
 
 ### 2. Lazy Loading
-- [ ] Create at least 1 lazy-loaded routing configuration representing a complete feature
-- [ ] Create at least 1 lazy-loaded component
-  - [ ] Component can be inside the lazy-loaded feature or separate
+- [x] Create at least 1 lazy-loaded routing configuration representing a complete feature
+- [x] Create at least 1 lazy-loaded component
+  - [x] Component can be inside the lazy-loaded feature or separate
 
 ### 3. General Requirements
 - [x] Create a data storage service and/or backend service
@@ -41,11 +41,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   - [x] Admin => extended options
 
 ### 4. Testing
-- [ ] Develop a unit testing plan for at least 1 component
-  - [ ] Document both positive and negative tests
-- [ ] Write unit tests based on the testing plan
-  - [ ] Implement at least 3 positive unit tests
-  - [ ] Implement at least 2 negative unit tests
+- [x] Develop a unit testing plan for at least 1 component
+  - [x] Document both positive and negative tests
+- [x] Write unit tests based on the testing plan
+  - [x] Implement at least 3 positive unit tests
+  - [x] Implement at least 2 negative unit tests
 
 ### 5. Deployment
 - [ ] Deploy the application via Firebase using the AOT principle
