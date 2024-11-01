@@ -14,12 +14,12 @@ export class LyricsFormatPipe implements PipeTransform {
   }
 
   transformText(lyrics: string): string {
-    return lyrics.replace(/\\t/g, '    ')
+    return lyrics.replace(/\\t/g, '\t')
                   .replace(/\\n/g, '\n');
   }
 
   reverse(lyrics: string): string {
-    return lyrics.replace(/    /g, '\\t')
+    return lyrics.replace(/\t/g, '\\t')
                   .replace(/\n/g, '\\n');
   }
 }
