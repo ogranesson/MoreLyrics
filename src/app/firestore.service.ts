@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc, deleteDoc, query, where, arrayUnion, DocumentReference } from '@angular/fire/firestore';
-import { Observable, Subject, from, combineLatest, map, filter, switchMap } from 'rxjs';
+import { Injectable, Query } from '@angular/core';
+import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc, deleteDoc, query, where, arrayUnion, DocumentReference, getDocs, CollectionReference } from '@angular/fire/firestore';
+import { Observable, Subject, from, combineLatest, map, filter, switchMap, of, catchError } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
 import { Admin } from './models/admin.model';
 import { Auth, authState } from '@angular/fire/auth';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirestoreService {
-  constructor(private db: Firestore, private auth: Auth) {}
+  constructor(private db: Firestore, private auth: Auth, private authService: AuthService) {}
 
   selectedSongbook = new Subject<Songbook>();
   selectedSong = new Subject<Song>();
@@ -18,18 +19,32 @@ export class FirestoreService {
   // ----------------- Songbooks ------------------- 
 
   getSongbooks(): Observable<Songbook[]> {
-    return authState(this.auth).pipe(
-      switchMap(user => {
-        if (user) {
-          const songbooksRef = collection(this.db, 'songbooks');
-          const songbooksQuery = query(songbooksRef, where('uid', '==', user.uid));
-          return collectionData(songbooksQuery, { idField: 'id' }) as Observable<Songbook[]>;
+    // Check if the user is an admin
+    return from(this.authService.isAdmin()).pipe(
+      switchMap(isAdmin => {
+        if (isAdmin) {
+          // If the user is an admin, fetch all songbooks
+          const songbooksRef = collection(this.db, 'songbooks') as CollectionReference<Songbook>;
+          return collectionData(songbooksRef, { idField: 'id' });
         } else {
-          throw new Error('User is not authenticated');
+          try {
+            const userUid = this.authService.getUid();
+            if (!userUid) {
+              throw new Error('User UID is not available.');
+            }
+            const userSongbooksRef = query(
+              collection(this.db, 'songbooks') as CollectionReference<Songbook>,
+              where('userID', '==', userUid)
+            );
+            return collectionData(userSongbooksRef, { idField: 'id' });
+          } catch (error) {
+            console.error("Error fetching UID:", error);
+            return of([]); // Return an empty array in case of an error
+          }
         }
       })
     );
-  }
+  }  
 
   getSongbook(songbookId: string): Observable<Songbook> {
     const songbookRef = doc(this.db, `songbooks/${songbookId}`) as DocumentReference<Songbook>;
@@ -133,8 +148,8 @@ export class FirestoreService {
 
   // ----------------- Others ------------------- 
 
-  getAdmins(uid: string | null): Observable<Admin> {
-    const adminRef = doc(this.db, `administrators/${uid}`) as DocumentReference<Admin>;
-    return docData(adminRef) as Observable<Admin>;
+  getAdmin(uid: string | null) { // if current user is admin, returns Observable, otherwise undefined
+    return docData<Admin>(
+      doc(this.db, 'administrators/' + uid) as DocumentReference<Admin>);
   }
 }
