@@ -1,5 +1,5 @@
 import { Injectable, Query } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc, deleteDoc, query, where, arrayUnion, DocumentReference, getDocs, CollectionReference } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc, deleteDoc, query, where, arrayUnion, DocumentReference, getDocs, CollectionReference, arrayRemove } from '@angular/fire/firestore';
 import { Observable, Subject, from, combineLatest, map, filter, switchMap, of, catchError } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
@@ -135,6 +135,22 @@ export class FirestoreService {
           res.error(error);
         });
     });
+  }
+
+  deleteSong(songId: string, songbookId: string): Observable<void> {
+    const songRef = doc(this.db, `songs/${songId}`) as DocumentReference<Song>;
+    return this.removeSongIdFromSongbook(songbookId, songId).pipe( // pipe method is used to compose and apply multiple operators to an Observable
+      switchMap(() => from(deleteDoc(songRef))) // switchMap is used to chain the two asynchronous operations
+    );
+  }
+
+  removeSongIdFromSongbook(songbookId: string, songId: string): Observable<void> {
+    const songbookRef = doc(this.db, `songbooks/${songbookId}`);
+    return from(
+      updateDoc(songbookRef, {
+        songIds: arrayRemove(songId),
+      })
+    );
   }
 
   addSongIdToSongbook(songbookId: string, songId: string): Observable<void> {
