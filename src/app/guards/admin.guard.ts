@@ -11,13 +11,15 @@ export const adminGuard: CanActivateFn = (route, state) => {
   const firestoreService = inject(FirestoreService);
   const router = inject(Router);
 
-  return firestoreService.getAdmins(authService.getUid()).pipe(map(
+  return firestoreService.getAdmin(authService.getUid()).pipe(map(
     (admin: Admin|undefined) => {
       if (admin) {
         return true;
       }
-
-      return router.parseUrl('/home');
+      else {
+        router.parseUrl('/home');
+        return false;
+      }
     }
   ))
 };
