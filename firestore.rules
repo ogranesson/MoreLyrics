@@ -7,28 +7,23 @@ service cloud.firestore {
     }
     
     function isAdmin() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid))
-             .data.role == "admin";
-    }
-    
-    function isOwner(documentUid) {
-      return request.auth != null && request.auth.uid == documentUid;
+      return isAuthenticated() &&
+        exists(/databases/$(database)/documents/administrators/$(request.auth.uid));
     }
     
     match /songbooks/{songbookId} {
-      allow read, write: if isAuthenticated() && isAdmin();
-      allow read, write: if isAuthenticated() && isOwner(resource.data.uid);
+      allow read, update, delete: if isAuthenticated() && resource.data.userID == request.auth.uid;
+      allow write: if isAuthenticated();
+      allow read, write, update, delete: if isAdmin();
     }
     
     match /songs/{songId} {
-      allow read, write: if isAuthenticated() && isAdmin();
-      allow read: if isAuthenticated();
-      allow write: if isAuthenticated();
+      allow read, write, update, delete: if isAuthenticated();
     }
     
-    match /users/{userId} {
-      allow read: if isAuthenticated() && request.auth.uid == userId;
-      allow read, write: if isAuthenticated() && isAdmin();
+    match /administrators/{adminId} {
+      allow read: if true;
+      allow write: if false;
     }
   }
 }
