@@ -11,7 +11,7 @@ export class AuthService {
   token: string | null = null;
 
   constructor(private router: Router, private auth: Auth, private db: Firestore) {
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (typeof window !== 'undefined' && window.localStorage) { // TODO: stay logged in after refresh
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
         this.token = storedToken;
