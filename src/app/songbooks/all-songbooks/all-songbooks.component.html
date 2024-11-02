@@ -1,5 +1,5 @@
-<div class="flex flex-row w-full p-3 bg-gray-200 h-screen">
-    <div *ngFor="let songbook of songbooks" (click)="selectSongbook(songbook.id)" class="bg-white rounded-lg hover:cursor-pointer w-1/6 h-1/2 p-3 mx-2 flex flex-col items-center">
+<div class="flex flex-row w-full p-3 h-screen">
+    <div *ngFor="let songbook of songbooks" (click)="selectSongbook(songbook.id)" class="bg-white rounded-lg border-2 border-gray-200 hover:cursor-pointer w-1/6 h-1/2 p-3 mx-2 flex flex-col items-center">
         <img width="100%" src={{songbook.img}} alt="songbook">
         <div class="grid grid-cols-5 w-full h-full items-center">
             <div class="col-span-4">
