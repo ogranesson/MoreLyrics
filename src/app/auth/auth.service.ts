@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth'
+import { Auth, createUserWithEmailAndPassword, fetchSignInMethodsForEmail, signInWithEmailAndPassword } from '@angular/fire/auth'
 import { Firestore, collection, query, where, getDocs, CollectionReference } from '@angular/fire/firestore';
-import { Observable} from 'rxjs';
+import { from, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -74,25 +74,12 @@ export class AuthService {
     }
   }
 
-  checkEmailTaken(email: string): Observable<boolean> {
-    const usersRef = collection(this.db, 'users');
-    const q = query(usersRef, where('email', '==', email));
-    return new Observable<boolean>(observer => {
-      getDocs(q)
-        .then((snapshot: { empty: any; }) => {
-          observer.next(!snapshot.empty);
-          observer.complete();
-        })
-        .catch((error: any) => {
-          console.error("Error checking email:", error);
-          observer.next(false);
-          observer.complete();
-        });
-    });
-  }
-
   checkEmailExists(email: string): Observable<boolean> {
-    return this.checkEmailTaken(email);
+    return from(
+      fetchSignInMethodsForEmail(this.auth, email).then((methods: string[]) => {
+        return methods.length > 0; // If there are methods, the email is taken
+      })
+    );
   }
 
   isAdmin(): Promise<boolean> { // promise needed because getDocs is an async function

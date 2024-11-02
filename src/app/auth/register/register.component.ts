@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AsyncValidatorFn } from '@angular/forms';
 import { map } from 'rxjs/operators';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,7 @@ export class RegisterComponent {
 
   emailTakenValidator(): AsyncValidatorFn {
     return (control: AbstractControl) => {
-      return this.authService.checkEmailTaken(control.value).pipe(
+      return this.authService.checkEmailExists(control.value).pipe(
         map(isTaken => (isTaken ? { emailTaken: true } : null))
       );
     };
