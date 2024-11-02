@@ -30,7 +30,7 @@ export const routes: Routes = [
 
     { path: 'edit-lyrics/:songId', component: EditSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
     { path: 'new-song', component: NewSongComponent, canActivate: [loggedInGuard], canDeactivate: [deactivateGuard] },
-    { path: 'admin', component: AdminPanelComponent, canActivate: [adminGuard], canDeactivate: [deactivateGuard] },
+    { path: 'admin', component: AdminPanelComponent, canActivate: [adminGuard] },
     
     { path: '**', component: PageNotFoundComponent },
 ];
