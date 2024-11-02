@@ -80,7 +80,6 @@ export class AuthService {
       return this.uid;
     }
     else {
-      console.error('Error fetching UID: User is not authenticated.');
       return null;
     }
   }
@@ -92,31 +91,6 @@ export class AuthService {
       })
     );
   }
-
-  isAdmin(): Promise<boolean> {
-    return new Promise((resolve) => {
-      this.auth.onAuthStateChanged((user) => {
-        if (!user) {
-          resolve(false);
-          return;
-        }
-  
-        const adminQuery = query(
-          collection(this.db, 'administrators') as CollectionReference,
-          where('__name__', '==', user.uid)
-        );
-  
-        getDocs(adminQuery)
-          .then((snapshot) => {
-            resolve(!snapshot.empty); // Returns true if the user is an admin
-          })
-          .catch((error) => {
-            console.error("Error checking admin status:", error);
-            resolve(false);
-          });
-      });
-    });
-  }  
 
   getSongbookCount(): Observable<number> {
     const songbookCollection = collection(this.db, 'songbooks');

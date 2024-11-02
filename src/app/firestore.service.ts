@@ -19,14 +19,14 @@ export class FirestoreService {
   // ----------------- Songbooks ------------------- 
 
   getSongbooks(): Observable<Songbook[]> {
-    // Check if the user is an admin
-    return from(this.authService.isAdmin()).pipe(
-      switchMap(isAdmin => {
-        if (isAdmin) {
-          // If the user is an admin, fetch all songbooks
+    const uid = this.authService.getUid();
+
+    return this.getAdmin(uid).pipe(
+      switchMap(admin => {
+        if (admin) { // If the user is an admin, fetch all songbooks
           const songbooksRef = collection(this.db, 'songbooks') as CollectionReference<Songbook>;
           return collectionData(songbooksRef, { idField: 'id' });
-        } else {
+        } else { // If the user is not an admin, fetch only their songbooks
           try {
             const userUid = this.authService.getUid();
             if (!userUid) {
@@ -44,7 +44,7 @@ export class FirestoreService {
         }
       })
     );
-  }  
+  }
 
   getSongbook(songbookId: string): Observable<Songbook> {
     const songbookRef = doc(this.db, `songbooks/${songbookId}`) as DocumentReference<Songbook>;

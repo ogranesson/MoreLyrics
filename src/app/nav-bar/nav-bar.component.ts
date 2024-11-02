@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 import { RouterModule } from '@angular/router';
-import { from, Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
+import { FirestoreService } from '../firestore.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,10 +17,14 @@ export class NavBarComponent implements OnInit {
   isLoggedIn: boolean = false;
   isAdmin!: Observable<boolean>
 
-  constructor (private _authservice: AuthService) { } // underscore as naming for private variables
+  constructor (private _authservice: AuthService, private firestoreservice: FirestoreService) { } // underscore as naming for private variables
 
   ngOnInit() {
-    this.isAdmin = from(this._authservice.isAdmin()); // from to convert Promise to Observable
+    const uid = this._authservice.getUid();
+
+    this.isAdmin = this.firestoreservice.getAdmin(uid).pipe(
+      map(admin => !!admin)
+    );
   }
 
   onLogOut() {
