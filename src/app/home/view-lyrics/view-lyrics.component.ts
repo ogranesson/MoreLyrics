@@ -18,7 +18,7 @@ import { Songbook } from '../../models/songbook.model';
   styleUrl: './view-lyrics.component.css'
 })
 export class ViewLyricsComponent {
-  songdata!: Song;
+  songdata!: Song | null;
   currentSongbook!: Songbook;
 
   constructor(private firestoreservice: FirestoreService, public sanitizer: DomSanitizer, private snackbar: MatSnackBar) { }
@@ -42,6 +42,7 @@ export class ViewLyricsComponent {
     if (confirm("Are you sure you want to delete " + name + "?")) {
       this.firestoreservice.deleteSong(songId, this.currentSongbook.id).subscribe({
         next: () => {
+          this.songdata = null;
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: { type: 'Song', title: title, action: 'deleted' },
             duration: 3000,
