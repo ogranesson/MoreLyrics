@@ -25,9 +25,9 @@ export class RegisterComponent {
   }
 
   emailTakenValidator(): AsyncValidatorFn {
-    return (control: AbstractControl) => {
+    return (control: AbstractControl) => { // AbstractControl = single form field
       return this.authService.checkEmailExists(control.value).pipe(
-        map(isTaken => (isTaken ? { emailTaken: true } : null))
+        map(isTaken => (isTaken ? { emailTaken: true } : null)) // map performs operations on Observable and returns a new Observable
       );
     };
   }
