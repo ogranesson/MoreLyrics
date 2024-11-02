@@ -2,7 +2,7 @@
 <div (click)="allSongs()" class="bg-blue-900 hover:bg-blue-950 text-white font-semibold hover:cursor-pointer p-2 mb-2 w-full text-center rounded-lg">View all songs</div>
 <div (click)="newSongbook()" class="bg-blue-900 hover:bg-blue-950 text-white font-semibold hover:cursor-pointer p-2 mb-2 w-full text-center rounded-lg">New songbook</div>
 <div *ngFor="let songbook of songbooks | songbookFilter: search" (click)="selectSongbook(songbook)"
-class="rounded p-2 mb-2 font-bold transition hover:bg-black hover:text-white hover:cursor-pointer grid grid-cols-4 gap-2 items-center"
+class="rounded p-2 mb-2 font-bold border-2 border-gray-200 transition hover:bg-black hover:text-white hover:cursor-pointer grid grid-cols-4 gap-2 items-center"
 [ngClass]="{'text-white': songbook.id === currentlySelectedSongbook?.id,
 'bg-black': songbook.id === currentlySelectedSongbook?.id, 'text-black': songbook.id != currentlySelectedSongbook?.id,
 'bg-white': songbook.id != currentlySelectedSongbook?.id}">
