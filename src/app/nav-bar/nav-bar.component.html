@@ -12,8 +12,11 @@
         <li>
           <a [routerLink]="['/songbooks/all']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">All songbooks</a>
         </li>
+        <li *ngIf="isAdmin | async"> <!-- async needed because isAdmin is a Promise type -->
+          <a [routerLink]="['/admin']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Admin</a>
+        </li>
         <li>
-          <a href="#" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Contact</a>
+          <a href="https://github.com/ogranesson/MoreLyrics" target="_blank" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Github</a>
         </li>
         <li>
           <a (click)="onLogOut()" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Logout</a>
