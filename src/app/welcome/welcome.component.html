@@ -1,5 +1,7 @@
-<div class="flex flex-col w-full">
+<div class="flex flex-col gap-2 w-full items-center">
     <div class="text-center m-10 font-extrabold text-4xl">Welcome to MoreLyrics!</div>
-    <a [routerLink]="['/register']"><div class="p-4 w-1/3 rounded-lg mx-auto bg-blue-900 hover:bg-blue-950 text-center text-white">Register</div></a>
-    <a [routerLink]="['/login']"><div class="p-4 w-1/3 my-5 rounded-lg mx-auto bg-blue-900 hover:bg-blue-950 text-center text-white">Login</div></a>
+    <img src="assets/colored-logo.png" class="w-1/3" alt="logo">
+    <div class="text-center m-10 text-3xl">Your best friend for gigs, campfires and jamming! Heavily inspired by UltimateGuitar.</div>
+    <a [routerLink]="['/register']" class="w-1/3"><div class="p-4 rounded-lg mx-auto bg-blue-900 hover:bg-blue-950 text-center text-white">Register</div></a>
+    <a [routerLink]="['/login']" class="w-1/3"><div class="p-4 my-5 rounded-lg mx-auto bg-blue-900 hover:bg-blue-950 text-center text-white">Login</div></a>
 </div>
