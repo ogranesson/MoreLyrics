@@ -20,7 +20,6 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     this.isAdmin = from(this._authservice.isAdmin()); // from to convert Promise to Observable
-    console.log("Admin" + this.isAdmin);
   }
 
   onLogOut() {

@@ -9,12 +9,16 @@ import { from, Observable} from 'rxjs';
 })
 export class AuthService {
   token: string | null = null;
+  uid: string | null = null;
 
   constructor(private router: Router, private auth: Auth, private db: Firestore) {
-    if (typeof window !== 'undefined' && window.localStorage) { // TODO: stay logged in after refresh
-      const storedToken = localStorage.getItem('token');
-      if (storedToken) {
-        this.token = storedToken;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      if (localStorage.getItem('token')) {
+        this.token = localStorage.getItem('token');
+        this.uid = localStorage.getItem('uidToken');
+        this.auth.onAuthStateChanged(
+          () => this.getUid()
+        );
       }
     }
   }
@@ -26,6 +30,10 @@ export class AuthService {
           (token:string) => {
             this.token = token;
             localStorage.setItem('token', token);
+            const uid = this.getUid();
+            if(uid) {
+              localStorage.setItem('uidToken', uid); // setting the uid as a token to be referenced
+            }
             return true;
           }
         );
@@ -68,7 +76,10 @@ export class AuthService {
   getUid(): string | null {
     if (this.auth.currentUser) {
       return this.auth.currentUser.uid;
-    } else {
+    } else if (this.uid) {
+      return this.uid;
+    }
+    else {
       console.error('Error fetching UID: User is not authenticated.');
       return null;
     }
@@ -82,21 +93,28 @@ export class AuthService {
     );
   }
 
-  isAdmin(): Promise<boolean> { // promise needed because getDocs is an async function
-    if (!this.auth.currentUser) {
-      return Promise.resolve(false);
-    }
-
-    const adminQuery = query(collection(this.db, 'administrators') as CollectionReference,
-                              where('__name__', '==', this.auth.currentUser.uid)); // querying the admins collection
-
-    return getDocs(adminQuery)
-      .then(snapshot => {
-        return !snapshot.empty; // returns true if the user is an admin
-      })
-      .catch(error => {
-        console.error("Error checking admin status:", error);
-        return false;
+  isAdmin(): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.auth.onAuthStateChanged((user) => {
+        if (!user) {
+          resolve(false);
+          return;
+        }
+  
+        const adminQuery = query(
+          collection(this.db, 'administrators') as CollectionReference,
+          where('__name__', '==', user.uid)
+        );
+  
+        getDocs(adminQuery)
+          .then((snapshot) => {
+            resolve(!snapshot.empty); // Returns true if the user is an admin
+          })
+          .catch((error) => {
+            console.error("Error checking admin status:", error);
+            resolve(false);
+          });
       });
-  }
+    });
+  }  
 }

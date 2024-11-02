@@ -1,5 +1,5 @@
-import { Injectable, Query } from '@angular/core';
-import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc, deleteDoc, query, where, arrayUnion, DocumentReference, getDocs, CollectionReference, arrayRemove } from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { Firestore, collection, collectionData, doc, docData, setDoc, updateDoc, deleteDoc, query, where, arrayUnion, DocumentReference, CollectionReference, arrayRemove } from '@angular/fire/firestore';
 import { Observable, Subject, from, combineLatest, map, filter, switchMap, of, catchError } from 'rxjs';
 import { Song } from './models/song.model';
 import { Songbook } from './models/songbook.model';
