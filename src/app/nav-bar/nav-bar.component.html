@@ -2,6 +2,9 @@
   <a *ngIf="authservice.isLoggedIn()" class="block h-12" href="/home"><img src="assets/logo-white.png" alt="Logo" class="h-full"></a>
   <a *ngIf="!authservice.isLoggedIn()" class="block h-12" href="/"><img src="assets/logo-white.png" alt="Logo" class="h-full"></a>
     <ul class="m-0 p-0 after:content-[''] flex flex-row items-center after:block after:clear-both text-white">
+        <li>
+          <a href="https://github.com/ogranesson/MoreLyrics" target="_blank" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Github</a>
+        </li>
       <ng-template [ngIf]="authservice.isLoggedIn()">
         <li>
           <a [routerLink]="['/home']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Home</a>
@@ -14,9 +17,6 @@
         </li>
         <li *ngIf="isAdmin | async"> <!-- async needed to subscribe to the Observable -->
           <a [routerLink]="['/admin']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Admin</a>
-        </li>
-        <li>
-          <a href="https://github.com/ogranesson/MoreLyrics" target="_blank" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Github</a>
         </li>
         <li>
           <a (click)="onLogOut()" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Logout</a>
