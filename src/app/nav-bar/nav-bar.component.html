@@ -12,7 +12,7 @@
         <li>
           <a [routerLink]="['/songbooks/all']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">All songbooks</a>
         </li>
-        <li *ngIf="isAdmin | async"> <!-- async needed because isAdmin is a Promise type -->
+        <li *ngIf="isAdmin">
           <a [routerLink]="['/admin']" class="block px-3 py-6 text-sm font-medium transition hover:bg-blue-950">Admin</a>
         </li>
         <li>

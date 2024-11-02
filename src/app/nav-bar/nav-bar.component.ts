@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 import { RouterModule } from '@angular/router';
+import { from, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,12 +14,13 @@ import { RouterModule } from '@angular/router';
 export class NavBarComponent implements OnInit {
   public isMobileMenuOpen = false;
   isLoggedIn: boolean = false;
-  isAdmin!: Promise<boolean>
+  isAdmin!: Observable<boolean>
 
-  constructor (private _authservice: AuthService) { } // underscore for private variables
+  constructor (private _authservice: AuthService) { } // underscore as naming for private variables
 
   ngOnInit() {
-    this.isAdmin = this._authservice.isAdmin();
+    this.isAdmin = from(this._authservice.isAdmin()); // from to convert Promise to Observable
+    console.log("Admin" + this.isAdmin);
   }
 
   onLogOut() {
