@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, createUserWithEmailAndPassword, fetchSignInMethodsForEmail, signInWithEmailAndPassword } from '@angular/fire/auth'
 import { Firestore, collection, query, where, getDocs, CollectionReference } from '@angular/fire/firestore';
-import { from, Observable} from 'rxjs';
+import { from, map, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -117,4 +117,18 @@ export class AuthService {
       });
     });
   }  
+
+  getSongbookCount(): Observable<number> {
+    const songbookCollection = collection(this.db, 'songbooks');
+    return from(getDocs(songbookCollection)).pipe(
+      map(snapshot => snapshot.size)
+    );
+  }
+
+  getSongCount(): Observable<number> {
+    const songCollection = collection(this.db, 'songs');
+    return from(getDocs(songCollection)).pipe(
+      map(snapshot => snapshot.size)
+    );
+  }
 }

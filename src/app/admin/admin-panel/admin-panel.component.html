@@ -1,1 +1,23 @@
-<p>admin-panel works!</p>
+<div class="admin-panel p-8 min-h-screen">
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Admin Panel</h1>
+
+        <div *ngIf="error" class="error-message bg-red-100 text-red-700 p-4 rounded-md mb-4">
+        {{ error }}
+        </div>
+
+        <div *ngIf="songbookCount !== null && songCount !== null">
+        <p class="text-lg font-semibold text-gray-700">
+            <strong>Number of Songbooks:</strong> {{ songbookCount }}
+        </p>
+        <p class="text-lg font-semibold text-gray-700 mt-2">
+            <strong>Number of Songs:</strong> {{ songCount }}
+        </p>
+        </div>
+
+        <div *ngIf="(songbookCount === null || songCount === null) && !error">
+        <p class="text-gray-500 text-center mt-4">Loading data...</p>
+        </div>
+    </div>
+</div>
+  
